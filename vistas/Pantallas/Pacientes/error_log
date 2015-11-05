@@ -1,0 +1,41 @@
+[06-Feb-2015 09:21:19 America/Denver] PHP Notice:  Undefined index: ced in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/datos_paciente.php on line 1
+[11-Mar-2015 08:04:50 America/Denver] PHP Notice:  Undefined index: id_nivel in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 30
+[11-Mar-2015 08:16:27 America/Denver] PHP Notice:  Undefined index: id_nivel in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 30
+[12-Mar-2015 10:41:24 America/Denver] PHP Notice:  Undefined index: id_nivel in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 30
+[12-Mar-2015 16:32:11 America/Denver] PHP Notice:  Undefined variable: paciente in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/datos_paciente.php on line 148
+[12-Mar-2015 16:33:02 America/Denver] PHP Notice:  Undefined variable: paciente in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/datos_paciente.php on line 148
+[13-Mar-2015 10:43:02 America/Denver] PHP Notice:  Undefined index: id_nivel in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 30
+[13-Mar-2015 10:43:35 America/Denver] PHP Notice:  Undefined index: id_nivel in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 30
+[14-Mar-2015 08:49:18 America/Denver] PHP Notice:  Undefined index: id_nivel in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 30
+[14-Mar-2015 12:04:02 America/Denver] PHP Notice:  Undefined index: id_nivel in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 30
+[14-Mar-2015 13:22:41 America/Denver] PHP Notice:  Undefined index: id_nivel in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 30
+[14-Mar-2015 14:07:19 America/Denver] PHP Notice:  Undefined index: id_nivel in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 30
+[14-Mar-2015 14:07:42 America/Denver] PHP Notice:  Undefined index: id_nivel in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 30
+[14-Mar-2015 14:58:27 America/Denver] PHP Notice:  Undefined index: id_nivel in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 30
+[14-Mar-2015 15:12:31 America/Denver] PHP Notice:  Undefined index: id_nivel in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 30
+[14-Mar-2015 15:14:15 America/Denver] PHP Notice:  Undefined index: id_nivel in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 30
+[14-Mar-2015 15:48:12 America/Denver] PHP Notice:  Undefined index: id_nivel in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 30
+[14-Mar-2015 15:53:30 America/Denver] PHP Notice:  Undefined index: id_nivel in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 30
+[14-Mar-2015 16:52:32 America/Denver] PHP Notice:  Undefined index: id_nivel in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 30
+[14-Mar-2015 17:44:22 America/Denver] PHP Notice:  Undefined index: id_nivel in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 30
+[16-Mar-2015 10:49:20 America/Denver] PHP Notice:  Undefined variable: SESSION in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 32
+[16-Mar-2015 11:58:37 America/Denver] PHP Notice:  Undefined variable: SESSION in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 32
+[16-Mar-2015 11:59:33 America/Denver] PHP Notice:  Undefined variable: SESSION in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 32
+[16-Mar-2015 12:28:30 America/Denver] PHP Notice:  Undefined variable: SESSION in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 32
+[17-Mar-2015 12:33:09 America/Denver] PHP Notice:  Undefined variable: SESSION in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 32
+[17-Mar-2015 12:54:53 America/Denver] PHP Notice:  Undefined variable: SESSION in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 32
+[17-Mar-2015 13:23:13 America/Denver] PHP Notice:  Undefined variable: SESSION in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 32
+[27-Mar-2015 13:15:54 America/Denver] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/lista_estado.php on line 21
+[27-Mar-2015 13:17:07 America/Denver] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/lista_estado.php on line 21
+[27-Mar-2015 13:17:44 America/Denver] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/lista_estado.php on line 21
+[30-Mar-2015 09:24:51 America/Denver] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php:30) in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 34
+[06-Apr-2015 15:11:41 America/Denver] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php:30) in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 34
+[06-Apr-2015 16:16:58 America/Denver] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php:30) in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 34
+[06-Apr-2015 16:53:33 America/Denver] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php:30) in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 34
+[10-Apr-2015 15:01:09 America/Denver] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php:30) in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 34
+[14-Apr-2015 08:36:18 America/Denver] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php:30) in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 34
+[14-Apr-2015 08:42:15 America/Denver] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php:30) in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 34
+[14-Apr-2015 08:48:02 America/Denver] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php:30) in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 34
+[14-Apr-2015 09:23:05 America/Denver] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php:30) in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 34
+[14-Apr-2015 09:50:00 America/Denver] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php:30) in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 34
+[14-Apr-2015 10:22:32 America/Denver] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php:30) in /home1/veneasis/public_html/vistas/Pantallas/Pacientes/terminar.php on line 34

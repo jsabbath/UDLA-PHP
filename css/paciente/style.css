@@ -1,0 +1,78 @@
+
+.box{
+	height: 75px;
+	padding-top: 15px;
+	padding-bottom: 5px;
+	margin: 5px;
+	border-radius: 7px;
+	background: #f4f4f4;
+	border: 1px solid #ccc;
+}
+.box:hover{
+	background: #4fc1e9;
+	color: #fff;
+}
+.preguntas ul {
+  list-style: none;
+  /*margin: 0px 9%;*/
+}
+
+.box-text{
+	font-size: 20px;
+	font-family: 'Courgette', cursive;
+}
+
+.box-button{
+
+}
+
+.centrar{
+	margin: 0 auto;
+}
+
+.box-checked{
+	height: 75px;
+	padding-top: 15px;
+	padding-bottom: 5px;
+	margin: 5px;
+	border-radius: 7px;
+	background: #00ba8b;
+	border: 1px solid #fff;
+	color: #fff;
+}	
+.nav-color{
+    background: #00ba8b !important;
+  }
+  .link-color{
+    color: #fff !important;
+  }
+  h1, h2, h3, h4, h5, p{
+    font-family: 'Nunito', sans-serif; 
+  }
+
+  p, label{
+    font-size: 16px;
+  }
+
+  input[type=radio] {
+    margin: 4px 10px 10px 0;
+    margin-top: 1px \9;
+    line-height: 2px;
+    width:18px;
+    height: 18px;
+    
+  } 
+.ayuda p{
+	font-size: 20px;
+}
+
+#contenedor {
+    margin-top: 15px;
+}
+.added {
+    float: left;
+    margin-right: 10px;
+}
+.eliminar {
+    margin: 5px;
+}
