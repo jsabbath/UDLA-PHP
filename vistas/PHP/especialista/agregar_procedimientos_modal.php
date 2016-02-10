@@ -11,11 +11,11 @@ $nomenclatura = $_POST['nomenclatura'];
 
 	if ($sql){
 		$exito = "Exito, el nuevo procedimiento ha sido registrado.";
-		header("Location: ../../Pantallas/Especialista/procedimientos.php?exito_guardo=save");
+		header("Location: ../../Pantallas/Especialista/configuraciones.php?exito_guardo=save");
 	}
 	else 
 	{
 		$error = "Ha ocurrido un problema, no se pudo registrar el nuevo procedimiento.";
-		header("Location: ../../Pantallas/Especialista/procedimientos.php?error=$error");
+		header("Location: ../../Pantallas/Especialista/configuraciones.php?error=$error");
 	}
 ?>

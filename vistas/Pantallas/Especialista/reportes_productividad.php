@@ -24,7 +24,7 @@ $hoy = date('Y-m-d');
 //$mes_actual = 06;
 ?>
 
-<?php $procedimientos = mysql_query("SELECT * FROM porcentaje"); ?>
+<?php $procedimientos = mysql_query("SELECT * FROM porcentaje WHERE status = 'Activo' "); ?>
 
 <div class="container">
 	<div class="row">
@@ -33,7 +33,9 @@ $hoy = date('Y-m-d');
 		        <center>
 		        <form action="" method="POST" class="form-inline" accept-charset="utf-8">       
 		          <div class="control-group">
-		          <br><br><br>
+		          <br>
+		          	<a href="productividad_diaria.php" class="btn btn-info">Productividad General Por Dia</a>
+		          <br><br>
 		              <p>Seleccione un mes para visualizar el reporte.</p>
 		              <select name="mes" required>
 		                <option value="">Mes</option>
@@ -70,7 +72,7 @@ $hoy = date('Y-m-d');
 		        	  	</div>
 		        	  	<div class="widget-content">
 		        	  		
-		        	   			<table class="table table-striped table-bordered table-hover table-rp" id="table">
+		        	   			<table class="table table-bordered table-hover table-condensed table-rp" id="table">
 
 		        			<thead>
 					        	<tr>
@@ -91,7 +93,8 @@ $hoy = date('Y-m-d');
 		            	$total_ganancias = 0;
 		            	$i = 1;
 		            	
-		            	$reportes = mysql_query("SELECT * FROM reportes Where usuario_id = '{$empleado['id']}' AND MONTH(ctreated_at) = '$mes_actual' ");
+		            	$reportes = mysql_query("SELECT * FROM reportes Where usuario_id = '{$empleado['id']}' 
+		            				AND MONTH(ctreated_at) = '$mes_actual' ORDER BY ctreated_at DESC");
 		         
 
 		            	while($reporte = mysql_fetch_array($reportes)) {
@@ -115,7 +118,7 @@ $hoy = date('Y-m-d');
 		    			           	<td><?php  echo $reporte['ctreated_at']; ?></td>
 		    			          	<td>
 		    			            	<?php
-		    			             	echo  $precio_tratamiento." Bsf";
+		    			             	echo  number_format($precio_tratamiento)." Bsf";
 		    			            	$por= $precio_tratamiento * $empleado['dividendo'];
 		    			            	$porciento = $por / 100;
 		    			             	?>
@@ -124,7 +127,7 @@ $hoy = date('Y-m-d');
 		    			            <td><?php echo $empleado['dividendo']." %"; ?></td>
 		    			            <td>
 		    			                <?php
-		    			               		echo   $porciento." Bsf";
+		    			               		echo   number_format($porciento)." Bsf";
 		    			                  	$total_ganancias=$porciento + $total_ganancias;
 		    			                ?>
 		    			            </td>
@@ -138,9 +141,9 @@ $hoy = date('Y-m-d');
 
 	    			</table>
 		        <div class="resultados">
-		           <strong>Total Facturado: <?php echo $precio_total_tratamiento." Bsf"; ?></strong>
+		           <strong>Total Facturado: <?php echo number_format($precio_total_tratamiento)." Bsf"; ?></strong>
 		           		<br>
-		           <strong>Total en porcentaje de Ganancias: <?php echo $total_ganancias." Bsf"; ?></strong>
+		           <strong>Total en porcentaje de Ganancias: <?php echo number_format($total_ganancias)." Bsf"; ?></strong>
 		        </div>
 
             		</div> <!-- div widget-content -->

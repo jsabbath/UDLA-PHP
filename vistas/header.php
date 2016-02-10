@@ -14,14 +14,8 @@
 
 <link href="../../../css/font-awesome.css" rel="stylesheet">
 <link href="../../../css/style.css" rel="stylesheet">
-<!--
 <link href="../../../css/pages/dashboard.css" rel="stylesheet">
-<link href="../../../css/pages/reports.css" rel="stylesheet">
-<script src="../../../js/excanvas.min.js"></script>
-<script src="../../../js/chart.min.js" type="text/javascript"></script>
-<script language="javascript" type="text/javascript" src="../../../js/full-calendar/fullcalendar.min.js"></script>s
-<script src="../../../js/base.js"></script> 
--->
+
 <script src="../../../js/jquery-1.7.2.min.js"></script>
 <script src="../../../js/bootstrap.js"></script>
 <script src="../../../js/udla.js"></script>
@@ -88,11 +82,11 @@ if ($header==1) {
         <li <?php if ($activo==2) { echo 'class="active"';  }?>><a href="todos_los_pacientes.php"><i class="icon-group "></i><span>Pacientes</span> </a> </li>
         <li <?php if ($activo==3) { echo 'class="active"';  }?>><a href="crear_cita.php"><i class="icon-calendar-empty"></i><span> Crear cita</span> </a></li>
         <li <?php if ($activo==5) { echo 'class="active"';  }?>><a href="citas_pautadas.php"><i class="icon-calendar"></i><span> Citas Pautadas</span> </a> </li>
-        <li <?php if ($activo==6) { echo 'class="active"';  }?>><a href="procedimientos.php"><i class="icon-list-ul"></i></i><span> Procedimientos</span> </a> </li>
         <li <?php if ($activo==7) { echo 'class="active"';  }?>><a href="reportes.php"><i class="icon-list-ol"></i><span> Reportes</span> </a> </li>
        <li <?php if ($activo==8) { echo 'class="active"';  }?>><a href="reportes_productividad.php"><i class="icon-user-md"></i><span> Productividad</span> </a> </li>
        <li <?php if ($activo==9) { echo 'class="active"';  }?>><a href="morbilidad.php"><i class="icon-bar-chart"></i><span> Morbilidad</span> </a> </li>
-    
+      <li <?php if ($activo==10) { echo 'class="active"';  }?>><a href="configuraciones.php"><i class="icon-cogs"></i><span>Ajustes</span> </a> </li>
+
       </ul>
     </div>
     <!-- /container --> 
@@ -164,7 +158,7 @@ elseif ($header==2) {
       <li <?php if ($activo==5) { echo 'class="active"';  }?>><a href="cita_rapida.php"><i class="icon-share-alt"></i><span>Cita rapida </span> </a> </li>
       <li <?php if ($activo==6) { echo 'class="active"';  }?>><a href="pago_citas.php"><i class="icon-credit-card"></i><span>Pago de Citas </span> </a> </li>
       <li <?php if ($activo==7) { echo 'class="active"';  }?>><a href="morbilidad.php"><i class="icon-bar-chart"></i><span>Morbilidad</span> </a> </li>
-      
+
       <?php } ?>
                
       </ul>
@@ -224,10 +218,10 @@ elseif ($header==2) {
         <li <?php if ($activo==2) { echo 'class="active"';  }?>><a href="todos_los_pacientes.php"><i class="icon-group "></i><span>Pacientes</span> </a> </li>
         <li <?php if ($activo==3) { echo 'class="active"';  }?>><a href="crear_cita.php"><i class="icon-calendar-empty "></i><span>Crear cita</span> </a></li>
         <li <?php if ($activo==5) { echo 'class="active"';  }?>><a href="citas_pautadas.php"><i class="icon-calendar "></i><span>Citas Pautadas</span> </a> </li>
-        <li <?php if ($activo==6) { echo 'class="active"';  }?>><a href="procedimientos.php"><i class="icon-list-ul "></i><span>Procedimientos</span> </a> </li>
         <li <?php if ($activo==7) { echo 'class="active"';  }?>><a href="reportes.php"><i class="icon-list-ol "></i><span>Reportes</span> </a> </li>
        <li <?php if ($activo==8) { echo 'class="active"';  }?>><a href="reportes_productividad.php"><i class="icon-user-md "></i><span>Productividad</span> </a> </li>
        <li <?php if ($activo==9) { echo 'class="active"';  }?>><a href="morbilidad.php"><i class="icon-bar-chart"></i><span> Morbilidad</span> </a> </li>
+       <li <?php if ($activo==10) { echo 'class="active"';  }?>><a href="configuraciones.php"><i class="icon-cogs"></i><span>Ajustes</span> </a> </li>
 
       </ul>
     </div>

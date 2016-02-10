@@ -11,25 +11,31 @@ include "../../config/datos.php";
 	$status = 0;
 	$id = $_POST['paciente_id'];
 	$paquete_id = $_POST['paquete_id'];
-
+	$obsequio = $_POST['obsequio'];
+	
 	for ($i=0;$i<count($nombre);$i++) 
 	{
-		if($nombre[$i] != "")
+		if(trim($nombre[$i] )!= "")
 		{
 			
 		$guarda = mysql_query("INSERT INTO tratamientos VALUES(NULL, '$nombre[$i]', '$parte[$i]', '$cantidad[$i]', '$frecuencia[$i]', '$parametros[$i]', 
 				'$tipo', '$status', '0',  '$id', '$paquete_id', NOW(), '')");
-		}	
-	
-
+		}
 	}
-	
+
 	if ($guarda) 
 	{
+		if (trim($obsequio) != "") {
+			$up = mysql_query("UPDATE paquetes SET regalo = '{$obsequio}' WHERE id = '{$paquete_id}' LIMIT 1");
+		}
 		header("Location: ../../Pantallas/Especialista/ver_historial.php?paciente=$id&paquete=$paquete_id&act=procedimientos");
+		exit();
 	}
 	else
 	{
-		echo mysql_error();
+		$error = "no se ha podido registrar procedimientos, al parecer no selecciono ninguno";
+		header("Location: ../../Pantallas/Especialista/ver_historial.php?paciente=$id&paquete=$paquete_id&act=procedimientos&error=$error");
+		exit();
 	}
+
 ?>

@@ -1,0 +1,7 @@
+status = 0 -> POR CONFIRMAR 
+status = 1 -> CONFIRMADA
+status = 2 -> EN ESPERA 
+status = 3 -> EXITOSA
+status = 15 -> EN PROCESO
+status = 10 -> CANCELADA
+status = 100 -> AUSENTE

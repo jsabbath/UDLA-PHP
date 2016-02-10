@@ -13350,7 +13350,7 @@
 		"sNoFooter": "no-footer",
 	
 		/* Paging buttons */
-		"sPageButton": "paginate_button",
+		"sPageButton": "btn",
 		"sPageButtonActive": "current",
 		"sPageButtonDisabled": "disabled",
 	

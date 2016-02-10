@@ -42,10 +42,10 @@ $(document).ready(function() {
                  <center><div class="tipo_cita">Pacientes por nuevo caso</div></center> 
                   <?php  $todas_las_citas = mysql_query("SELECT * FROM citas");
                   while($datos=mysql_fetch_assoc($todas_las_citas)){ 
-                                    $paciente_id=$datos['paciente_id'];
-                                    $todos_paciente = mysql_query("SELECT * FROM pacientes Where id=$paciente_id");
-                                    while($paciente = mysql_fetch_array($todos_paciente)){      ?>
-     <?php if ($datos['fecha']== date("Y-m-d") AND $datos['status']==3 AND $datos['tipo']=="Nuevo" ) {  ?>
+                    $paciente_id=$datos['paciente_id'];
+                    $todos_paciente = mysql_query("SELECT * FROM pacientes Where id=$paciente_id");
+                    while($paciente = mysql_fetch_array($todos_paciente)){      ?>
+     <?php if ($datos['fecha']== date("2015-12-19") AND $datos['status']==3 AND $datos['tipo']=="Nuevo" ) {  ?>
 
                   <tr class="odd gradeX">
                    <td><?php echo $i; $i++ ?></td>
@@ -99,7 +99,7 @@ $(document).ready(function() {
                                     $paciente_id=$datos['paciente_id'];
                                     $todos_paciente = mysql_query("SELECT * FROM pacientes Where id=$paciente_id");
                                     while($paciente = mysql_fetch_array($todos_paciente)){      ?>
-     <?php if ($datos['fecha']== date("Y-m-d") AND $datos['status']==3 AND $datos['tipo']=="Control" ) {  ?>
+     <?php if ($datos['fecha']== date("2015-12-19") AND $datos['status']==3 AND $datos['tipo']=="Control" ) {  ?>
 
                   <tr class="odd gradeX">
                  <td><?php echo $n; $n++ ?></td>
@@ -159,7 +159,7 @@ $(document).ready(function() {
 
 
                                     while($paciente = mysql_fetch_array($todos_paciente)){      ?>
-                  <?php if ($datos['fecha']== date("Y-m-d") AND $datos['status']==3 AND $datos['tipo']=="Tratamiento" ) {  ?>
+                  <?php if ($datos['fecha']== date("2015-12-19") AND $datos['status']==3 AND $datos['tipo']=="Tratamiento" ) {  ?>
 
                   <tr class="odd gradeX">
                  <td><?php echo $l; $l++ ?></td>
@@ -245,7 +245,7 @@ $(document).ready(function() {
                                     $paciente_id=$datos['paciente_id'];
                                     $todos_paciente = mysql_query("SELECT * FROM pacientes Where id=$paciente_id");
                                     while($paciente = mysql_fetch_array($todos_paciente)){      ?>
-     <?php if ($datos['fecha']== date("Y-m-d") AND $datos['status']==3 AND $datos['tipo']=="Cirujia" ) {  ?>
+     <?php if ($datos['fecha']== date("2015-12-19") AND $datos['status']==3 AND $datos['tipo']=="Cirujia" ) {  ?>
 
                   <tr class="odd gradeX">
                  <td><?php echo $u; $u++ ?></td>
@@ -299,7 +299,7 @@ $(document).ready(function() {
                                     $paciente_id=$datos['paciente_id'];
                                     $todos_paciente = mysql_query("SELECT * FROM pacientes Where id=$paciente_id");
                                     while($paciente = mysql_fetch_array($todos_paciente)){      ?>
-     <?php if ($datos['fecha']== date("Y-m-d") AND $datos['status']==3 AND $datos['tipo']=="Emergencia" ) {  ?>
+     <?php if ($datos['fecha']== date("2015-12-19") AND $datos['status']==3 AND $datos['tipo']=="Emergencia" ) {  ?>
 
                   <tr class="odd gradeX">
                  <td><?php echo $s; $s++ ?></td>

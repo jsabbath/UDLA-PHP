@@ -42,6 +42,8 @@ else{
 	$porcentaje = "0%";
 }
 
+$paq = mysql_query("SELECT id, regalo FROM paquetes WHERE id = '{$paquete}' LIMIT 1 ");
+$paq_dt = mysql_fetch_assoc($paq);
 
 //****actualizamos el estatus del paquete original
 $aprobar = mysql_query("UPDATE paquetes SET status = 'Aprobado', update_at = NOW()
@@ -49,7 +51,7 @@ $aprobar = mysql_query("UPDATE paquetes SET status = 'Aprobado', update_at = NOW
 
 if ($aprobar) {
 	 //**** se crea un nuevo paquete aprobado 
-	$nuevo_paq = mysql_query("INSERT INTO paquete_aprobado VALUES(
+		$nuevo_paq = mysql_query("INSERT INTO paquete_aprobado VALUES(
 				NULL,
 	 			'$total', 
 	 			'0', 
@@ -59,7 +61,8 @@ if ($aprobar) {
 	 			'Ninguno',
 	 			'0',
 	 			'0',
-	 			'', 
+	 			'',
+	 			'{$paq_dt['regalo']}', 
 	 			'$paquete', 
 	 			'$paciente', 
 	 			NOW(), 

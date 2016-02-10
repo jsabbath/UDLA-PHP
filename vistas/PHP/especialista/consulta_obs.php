@@ -12,7 +12,7 @@ if (mysql_num_rows($consulta) > 0)
 			<a href="#" class="tip link-tip btn btn-mini" data-toggle="tooltip" data-placement="top" title="" data-original-title="<?php echo $list_obs['observacion']; ?>"><?php echo fechaALetras($list_obs['fecha']); ?> </a>			 
 	<?php }
 ?> 
-	</div> 
+	</div>
 <?php } 
 
 function fechaALetras($fecha){

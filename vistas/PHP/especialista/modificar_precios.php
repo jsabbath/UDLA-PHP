@@ -19,12 +19,12 @@ while ($lista = mysql_fetch_assoc($lista_tra)) {
 }
 
 if ($actualizar) {	
-	header("Location: ../../Pantallas/Especialista/procedimientos.php?msgp=ok&exit=$updates#cabioprecios");
+	header("Location: ../../Pantallas/Especialista/configuraciones.php?msgp=ok&exit=$updates#cabioprecios");
 	exit();
 }
 else
 {
-	header("Location: ../../Pantallas/Especialista/procedimientos.php?error=ok#cabioprecios");
+	header("Location: ../../Pantallas/Especialista/configuraciones.php?error=ok#cabioprecios");
 	exit();
 }
 

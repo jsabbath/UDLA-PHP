@@ -124,12 +124,12 @@
 					<td> <strong><?php echo $lista_trat['cantidad']; ?></strong> 
 					</td>
 					<td>
-						<?php echo $monto['precio']; ?> Bs.
+						<?php echo number_format($monto['precio']); ?> Bs.
 						<input type="hidden" name="monto[]" value="<?php echo $monto['precio']; ?>">
 					</td>
 					<td><?php  
 					$total = $monto['precio'] * $lista_trat['cantidad'];
-					echo $total;
+					echo number_format($total);
 					?> Bs.</td>
 				</tr>
 				<?php 
@@ -145,8 +145,16 @@
 				<td colspan="3"></td>
 				<td colspan="1"><b></b></td> 
 				<td><b>Total</b></td> 
-				<td><b><?php echo $total_unitario; ?></b> Bs.</td>	
+				<td><b><?php echo number_format($total_unitario); ?></b> Bs.</td>	
 			</tr>
+
+			<?php if ($paqt['regalo'] != "") { ?>
+				<tr>
+					<td><strong>Regalo:</strong></td>
+					<td><?php echo $paqt['regalo']; ?></td>
+					<td colspan="4"></td>
+				</tr>
+			<?php } ?>
 
 			</table>
 		</div>
@@ -185,9 +193,9 @@
 				<tbody>
 					<tr>
 						<td> <span class="label label-success"><?php echo $paq_ap['status']; ?></span>  </td>
-						<td><strong><?php echo $paq_ap['total']; ?> Bs.f </strong> </td>
-						<td> <?php echo $paq_ap['abonado']; ?> Bs.f</td>
-						<td> <?php echo $paq_ap['restante']; ?> Bs.f</td>
+						<td><strong><?php echo number_format($paq_ap['total']); ?> Bs.f </strong> </td>
+						<td> <?php echo number_format($paq_ap['abonado']); ?> Bs.f</td>
+						<td> <?php echo number_format($paq_ap['restante']); ?> Bs.f</td>
 						<td> <?php echo $paq_ap['descuento']; ?> </td>
 						<td><center><span class="badge "><?php echo $paq_ap['citas']; ?></span></center>  </td>
 						<td><center><span class="badge badge-success"><?php echo $paq_ap['cita_created']; ?></span></center>  </td>

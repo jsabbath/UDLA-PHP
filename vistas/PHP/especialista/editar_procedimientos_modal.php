@@ -13,11 +13,11 @@ $nomenclatura = $_POST['nomenclatura'];
 			WHERE id = '{$id}' ");
 
 	if (mysql_affected_rows($sql) != '-1'){
-		header("Location: ../../Pantallas/Especialista/procedimientos.php?exito=exito");
+		header("Location: ../../Pantallas/Especialista/configuraciones.php?exito=exito");
 	}
 	else 
 	{
 		$error = "Ha ocurrido un problema, no se pudo editar el procedimiento. ".mysql_error();
-		header("Location: ../../Pantallas/Especialista/procedimientos.php?error=$error");
+		header("Location: ../../Pantallas/Especialista/configuraciones.php?error=$error");
 	}
 ?>

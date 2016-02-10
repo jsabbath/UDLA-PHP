@@ -43,15 +43,20 @@ class PDF extends FPDF {
 		$this->Ln();
 
 		$total = 0;
+		$sessiones = 0;
+		$cant = 0;
 		$this->SetFont('Arial','',10);
 		while ($fila = mysql_fetch_assoc($sql)) {
 		
 			$this->Cell(18,5,$fila['cantidad'],1,0,'C');
 			$this->Cell(90,5,$fila['nombre'],1,0,'L');
-			$this->Cell(25,5,$fila['precio']. ' Bs.',1,0,'C');
+			$this->Cell(25,5,number_format($fila['precio']). ' Bs.',1,0,'C');
 			$unitario = $fila['cantidad'] * $fila['precio'];
-			$this->Cell(25,5,$unitario. ' Bs.',1,1,'C');
+			$this->Cell(25,5,number_format($unitario). ' Bs.',1,1,'C');
 			$total = $total + $unitario;
+
+			$sessiones = $sessiones + $fila['cantidad'];
+			$cant++;
 		}
 
 			$this->Cell(18,5,'' ,1,0,'C');
@@ -63,7 +68,7 @@ class PDF extends FPDF {
 			$this->Cell(18,5,'' ,1,0,'C');
 			$this->Cell(90,5, '',1,0,'R');
 			$this->Cell(25,5, 'Total a pagar:',1,0,'R');
-			$this->Cell(25,5,$total. ' Bs.',1,0,'C');
+			$this->Cell(25,5,number_format($total). ' Bs.',1,0,'C');
 			$this->Cell(18,5,'Contado',1,0,'C');
 			$this->Ln();
 
@@ -76,7 +81,7 @@ class PDF extends FPDF {
 				$this->Cell(18,5,'' ,1,0,'C');
 				$this->Cell(90,5, '',1,0,'R');
 				$this->Cell(25,5, '5%:',1,0,'R');
-				$this->Cell(25,5,$desc. ' Bs.',1,0,'C');
+				$this->Cell(25,5,number_format($desc). ' Bs.',1,0,'C');
 				$this->Cell(18,5,'',1,0,'C');
 				$this->Ln();
 			}
@@ -87,7 +92,7 @@ class PDF extends FPDF {
 				$this->Cell(18,5,'' ,1,0,'C');
 				$this->Cell(90,5, '',1,0,'R');
 				$this->Cell(25,5, '10%:',1,0,'R');
-				$this->Cell(25,5,$desc. ' Bs.',1,0,'C');
+				$this->Cell(25,5,number_format($desc). ' Bs.',1,0,'C');
 				$this->Cell(18,5,'',1,0,'C');
 				$this->Ln();
 			}
@@ -99,14 +104,14 @@ class PDF extends FPDF {
 			$this->Cell(18,5,'' ,1,0,'C');
 			$this->Cell(90,5, '',1,0,'R');
 			$this->Cell(25,5, 'Total a Pagar:',1,0,'R');
-			$this->Cell(25,5,$total_pagar. ' Bs.',1,0,'C');
-			$this->Cell(18,5,$total_pagar. ' Bs.',1,0,'C');
+			$this->Cell(25,5,number_format($total_pagar). ' Bs.',1,0,'C');
+			$this->Cell(18,5,number_format($total_pagar). ' Bs.',1,0,'C');
 			$this->Ln();
 			$this->Ln();
 			$this->Ln();
 
+			$promedio = $sessiones / $cant;
 			$inicial = $total_pagar * 0.65;
-			$cuotas = ($total_pagar - $inicial) / 2 ;
 
 			$this->SetFont('Arial','B',11);
 			$this->Cell(18,7,'',0,0, 'C');
@@ -115,15 +120,26 @@ class PDF extends FPDF {
 
 			$this->SetFont('Arial','B',10);
 			$this->Cell(18,6,'Inicial' ,1,0,'C');
-			$this->Cell(90,6, $inicial. ' Bs',1,0,'C');
+			$this->Cell(90,6,number_format($inicial). ' Bs',1,0,'C');
 			$this->Ln();
 
-			$this->Cell(18,6,'2 Cuotas' ,1,0,'C');
-			$this->Cell(90,6, $cuotas. ' Bs',1,0,'C');
-			$this->Ln();
+			if ($promedio >= 3) {
+				$cuotas = ($total_pagar - $inicial) / 3 ;
+				$this->Cell(18,6,'3 Cuotas' ,1,0,'C');
+				$this->Cell(90,6,number_format($cuotas). ' Bs',1,0,'C');
+				$this->Ln();
+			}
+			else
+			{
+				$cuotas = ($total_pagar - $inicial) / 2 ;
+				$this->Cell(18,6,'2 Cuotas' ,1,0,'C');
+				$this->Cell(90,6, number_format($cuotas). ' Bs',1,0,'C');
+				$this->Ln();
+			}
+			
 
 			$this->Cell(18,6,'Obsequio' ,1,0,'C');
-			$this->Cell(90,6, '',1,0,'C');
+			$this->Cell(90,6, $paq_dato['regalo'],1,0,'C');
 			$this->Ln();
 	}
 }
@@ -142,7 +158,8 @@ $pdf->Ln();
 $pdf->Ln();
 
 $sql = mysql_query("SELECT * FROM tratamientos_aprobados WHERE paqueteaprob_id = '{$paq}'");
-$paq_sql = mysql_query("SELECT id, descuento FROM paquete_aprobado WHERE id = '{$paq}' LIMIT 1 ");
+$paq_sql = mysql_query("SELECT id, descuento, regalo FROM paquete_aprobado WHERE id = '{$paq}' LIMIT 1 ");
+
 $pdf->AliasNbPages();
 $pdf->Ln();
 //Primera página

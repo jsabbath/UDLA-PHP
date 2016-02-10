@@ -34,6 +34,8 @@ $actual=0;
 timer = setInterval("recargar()", 10000);
 </script>
 
+
+
 <div class="container">
   <br>
   <div class="row-fluid">
@@ -68,7 +70,7 @@ timer = setInterval("recargar()", 10000);
             <?php
               $n=1;
               $i=0;
-              $fecha_dato=date('Y-m-d');
+              $fecha_dato=date('2016-01-22');
               $todas_las_citas_2 = mysql_query("SELECT * FROM citas WHERE  
                                     fecha='$fecha_dato' AND 
                                     (status=2 OR status=100) 
@@ -99,14 +101,18 @@ timer = setInterval("recargar()", 10000);
                     </td> <?php } ?>
                     <td class="iconos_reporte"><?php echo $hora_llegada;?></td>
                     <td>
-                      <a href="<?php echo "#myModaleditar".$i; ?>" role="button" class="btn btn-inverse btn-small" data-toggle="modal" ><i class="icon-asterisk"></i> Procedimientos</a>
                       <a href="<?php echo "#myModalGeneral".$i; ?>" role="button" class="btn btn-default btn-small" data-toggle="modal"><i class="icon-ellipsis-vertical"></i> Opciones</a>
                           <?php if($datos_2['tipo'] == "Nuevo" OR $datos_2['tipo'] == "Control"    ){ 
                                   if($datos_2['status_pago'] == 1){ ?>
                                     <span class="label label-success font14 labels"><i class="icon-ok"></i> Pagado</span>
                           <?php } else{ ?>
                                   <a href="pagar.php?cita=<?php echo $datos_2['id']; ?>" class="btn btn-info btn-small"><i class="icon-credit-card"></i> Pagar</a>
-                          <?php } } ?>
+                          <?php } 
+                          }
+                          else{ ?>
+                          <a href="<?php echo "#myModaleditar".$i; ?>" role="button" class="btn btn-inverse btn-small" data-toggle="modal" ><i class="icon-asterisk"></i> Procedimientos</a>
+                         <?php }
+                           ?>
                     </td>
                 </tr>
 <!-- ////////////////////////////////Modal/////////////////////////////////////////////// -->
@@ -287,7 +293,7 @@ timer = setInterval("recargar()", 10000);
               </tr>
             </thead>
             <tbody>
-              <?php $dayy = date('Y-m-d'); ?>
+              <?php $dayy = date('2016-01-22'); ?>
               <?php  $todas_las_citas = mysql_query("SELECT * FROM citas");
               $l=0;
               $u=0;
@@ -295,7 +301,7 @@ timer = setInterval("recargar()", 10000);
                   $paciente_id=$datos['paciente_id'];
                   $todos_paciente = mysql_query("SELECT * FROM pacientes Where id = '$paciente_id' LIMIT 1");
                   while($paciente = mysql_fetch_array($todos_paciente)){  ?>
-                  <?php if ($datos['fecha']== date('Y-m-d')
+                  <?php if ($datos['fecha']== date('2016-01-22')
                     AND $datos['status']!=2
                     AND $datos['status']!=10 
                     AND $datos['status']!=15 
@@ -433,14 +439,14 @@ timer = setInterval("recargar()", 10000);
 <div class="widget-header ">
 <i class="icon-calendar"></i>
 <?php 
-$fecha_cita=date("Y-m-d");
+$fecha_cita=date("2016-01-22");
 $dias = array('','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo');
 $fecha_dia = $dias[date('N', strtotime($fecha_cita))];?>
 <h3>
 <?php if ($fecha_dia=='Sabado') { ?>
-Citas para el Lunes <?php echo date("Y-m-d", strtotime("+2 day")); ?></h3> <div Class"citas_manana"><?php  ?></div>
+Citas para el Lunes <?php echo date("2016-01-22", strtotime("+2 day")); ?></h3> <div Class"citas_manana"><?php  ?></div>
 <?php  }else { ?>
-Citas para mañana <?php echo date("Y-m-d", strtotime("+1 day")); ?></h3> <div Class"citas_manana"><?php  ?></div>
+Citas para mañana <?php echo date("2016-01-22", strtotime("+1 day")); ?></h3> <div Class"citas_manana"><?php  ?></div>
 <?php  } ?>
 </div> <!-- /widget-header -->
 <div class="widget-content">
@@ -466,7 +472,7 @@ while($datos_3=mysql_fetch_assoc($todas_las_citas_3)){
 $paciente_id_3=$datos_3['paciente_id'];
 $todos_paciente_3 = mysql_query("SELECT * FROM pacientes Where id=$paciente_id_3");
 while($paciente_3 = mysql_fetch_array($todos_paciente_3)){      ?>
-<?php if ($datos_3['fecha']== date("Y-m-d", strtotime("+2 day")) AND $fecha_dia=='Sabado' AND $datos_3['status']!=2 AND $datos_3['status']!=10 AND $datos_3['status']!=15 AND $datos_3['status']!=3)
+<?php if ($datos_3['fecha']== date("2016-01-22", strtotime("+2 day")) AND $fecha_dia=='Sabado' AND $datos_3['status']!=2 AND $datos_3['status']!=10 AND $datos_3['status']!=15 AND $datos_3['status']!=3)
  {  ?>
 <tr >
 <td><?php echo $paciente_3['nombre_completo']; ?></td>
@@ -545,7 +551,7 @@ while($paciente_3 = mysql_fetch_array($todos_paciente_3)){      ?>
 </form>
 </div>
 
-<?php } elseif  ($datos_3['fecha']== date("Y-m-d", strtotime("+1 day")) AND $datos_3['status']!=2 AND $datos_3['status']!=10 AND $datos_3['status']!=15 AND $datos_3['status']!=3) { ?>
+<?php } elseif  ($datos_3['fecha']== date("2016-01-22", strtotime("+1 day")) AND $datos_3['status']!=2 AND $datos_3['status']!=10 AND $datos_3['status']!=15 AND $datos_3['status']!=3) { ?>
 <tr class="odd gradeX">
 <td><?php echo $paciente_3['nombre_completo']; ?></td>
 <td><?php echo $paciente_3['telefono'];  ?></td>

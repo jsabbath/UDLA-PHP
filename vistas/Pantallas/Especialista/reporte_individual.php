@@ -7,12 +7,9 @@ include('../../PHP/funciones.php');
 $persona = $_GET['persona'];
 $mes_actual = $_GET['mes']; //06; // date('m');
 ?>
-<link href="../../../datatables/dataTables.bootstrap.css" rel="stylesheet">
-<script src="../../../datatables/dataTables.bootstrap.js"></script>
-<script src="../../../datatables/jquery.dataTables.js"></script>
 
 
-<?php $procedimientos = mysql_query("SELECT * FROM porcentaje WHERE ID = '{$persona}' LIMIT 1 "); ?>
+<?php $procedimientos = mysql_query("SELECT * FROM porcentaje WHERE id = '{$persona}' LIMIT 1 "); ?>
     <div class="container">
       <div class="row">
       <center> 
@@ -35,7 +32,7 @@ $mes_actual = $_GET['mes']; //06; // date('m');
             </div>
             <div class="widget-content">
                 
-                <table class="table table-striped table-bordered table-hover"  id="dataTables-example">
+                <table class="table table-condensed table-bordered table-hover"  id="dataTables-example">
 
                 <thead>
                   <tr>
@@ -79,7 +76,7 @@ $mes_actual = $_GET['mes']; //06; // date('m');
                         <td><?php  echo $reporte['ctreated_at']; ?></td>
                         <td>
                             <?php
-                              echo  $precio_tratamiento." Bsf";
+                              echo  number_format($precio_tratamiento)." Bsf";
                               $por= $precio_tratamiento * $datos['dividendo'];
                               $porciento=$por/100;
                             ?>
@@ -87,7 +84,7 @@ $mes_actual = $_GET['mes']; //06; // date('m');
                         <td><?php echo $datos['dividendo']." %"; ?></td>
                         <td>
                             <?php
-                              echo   $porciento." Bsf";
+                              echo   number_format($porciento)." Bsf";
                               $total_ganancias=$porciento + $total_ganancias;
                             ?>
                         </td>
@@ -99,19 +96,19 @@ $mes_actual = $_GET['mes']; //06; // date('m');
             <tr>
               <td colspan="4"></td>
               <td colspan="2"> <strong>Total Facturado: </strong> </td>
-              <td colspan=""><strong><?php echo $precio_total_tratamiento." Bsf"; ?></strong></td>
+              <td colspan=""><strong><?php echo number_format($precio_total_tratamiento)." Bsf"; ?></strong></td>
             </tr>
             <tr>
               <td colspan="4"></td>
               <td colspan="2"><strong>Total en porcentaje de Ganancias:</strong></td>
-              <td colspan=""><strong><?php echo $total_ganancias." Bsf"; ?></strong></td>
+              <td colspan=""><strong><?php echo number_format($total_ganancias)." Bsf"; ?></strong></td>
             </tr>
           </tbody>
         </table>
 
         <div class="resultados">
-          <strong>Total Facturado: <?php echo $precio_total_tratamiento." Bsf"; ?></strong><br>
-          <strong>Total en porcentaje de Ganancias: <?php echo $total_ganancias." Bsf"; ?></strong>
+          <strong>Total Facturado: <?php echo number_format($precio_total_tratamiento)." Bsf"; ?></strong><br>
+          <strong>Total en porcentaje de Ganancias: <?php echo number_format($total_ganancias)." Bsf"; ?></strong>
         </div>
 
        

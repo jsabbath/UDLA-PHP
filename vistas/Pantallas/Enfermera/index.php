@@ -21,7 +21,7 @@ $(document).ready(function() {
 		<div class="container">
     <br>
 			<div class="row">
-		
+		<div class="span12">
              
   <div class="widget">
           <div class="widget-header ">
@@ -147,6 +147,7 @@ $(document).ready(function() {
                   </tbody></table>
                    </div>
 
+</div>
 </div>
 </div>
 </div>

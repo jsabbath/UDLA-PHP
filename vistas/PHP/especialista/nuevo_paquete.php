@@ -5,7 +5,7 @@ $paciente_id = $_GET['paciente'];
 if ($_GET['on']=="create") 
 {
 	$nombre = $_GET['nombre'];
-	$paquete_nuevo = mysql_query("INSERT INTO paquetes VALUES(NULL, '$nombre', 0, 0, 0, '0', '0', '$paciente_id', NOW(), '' )");
+	$paquete_nuevo = mysql_query("INSERT INTO paquetes VALUES(NULL, '$nombre', 0, 0, 0, '', '0', '$paciente_id', NOW(), '' )");
 
 	if ($paquete_nuevo) 
 	{

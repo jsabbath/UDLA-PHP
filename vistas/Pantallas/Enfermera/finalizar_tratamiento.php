@@ -1,5 +1,5 @@
 <?php 
-$id = $_GET['id'];
+$id = isset($_GET['id'])?$_GET['id']: "" ;
 $paciente = $_GET['paciente'];
 $sesion_id = $_GET['sesion'];
 $header=2;
@@ -9,7 +9,7 @@ include("../../PHP/funciones.php");
 //consulta
 $tabla_pacientes = mysql_query("SELECT * FROM pacientes WHERE id = '{$paciente}' LIMIT 1 ");
 $paciente_data = mysql_fetch_assoc($tabla_pacientes);
-$tabla_usuario = mysql_query("SELECT * FROM porcentaje");
+$tabla_usuario = mysql_query("SELECT * FROM porcentaje WHERE status = 'Activo' ");
 ?>
  <script>
 $(document).ready(function() { $("#usuario").select2(
@@ -35,7 +35,7 @@ $(document).ready(function() { $("#usuario").select2(
 							<div class="posicion">		
 								<center>
 								<h3 class="texto">Si ha finalizado correctamente la aplicación del tratamiento. 
-                                 Registre quien aplico este tratamiento, Por favor Seleccione su nombre</h3>
+                                , Por favor Seleccione su nombre</h3>
 								</center>
 								
 								<form method="POST" action="../../PHP/enfermera/finalizar_tratamiento.php?cita=<?php echo $_GET['cita']; ?>">

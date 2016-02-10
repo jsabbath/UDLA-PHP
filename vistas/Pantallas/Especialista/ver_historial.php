@@ -18,6 +18,7 @@ $paquete_id = isset($_GET['paquete'])?$_GET['paquete']:"";
 require('../../header.php'); 
 include("../../PHP/paciente/consultas_historia.php");
 include("../../PHP/funciones.php");
+
 ?>
 
 
@@ -141,9 +142,6 @@ include("../../PHP/funciones.php");
 					</ul>
 				</div>	
 
-			
-
-
 				<div class="form-actions">
 					<button class="btn btn-primary">Guardar</button> 
 					<button class="btn">Cancelar</button>
@@ -190,20 +188,55 @@ include("../../PHP/funciones.php");
 		<?php if(isset($_GET['paquete']))
 		{ ?>
 				
-		<div class="span11 altura" id="resp_procedimientos">
+		<div class="span11" id="resp_procedimientos">
 			<h3>Lista de procedimentos Registrados:</h3>				
 			<?php include("../../PHP/especialista/consulta_procedimientos.php"); ?>
 			<hr>
 		</div>
-
-
+		
 		<div class="row-fluid">
 		<div class="Container-fluid">
 		<h3>Asignacón de procedimientos:</h3>
+
+		<div class="span10">
+		
+		<?php 
+		if (isset($_GET['error'])){ ?>
+			<div class="alert">
+			  <button type="button" class="close" data-dismiss="alert">&times;</button>
+			  <strong>Ha ocurrido un problema!</strong> <?php echo $_GET['error']; ?>.
+			</div>
+		<?php } ?>	
+		</div>
 			
 			<form method="POST"  action="../../PHP/especialista/register_tratamientos2.php">
 				<input type="hidden" name="paciente_id" value="<?php echo $id;?> ">
-				<input type="hidden" name="paquete_id" value="<?php echo $_GET['paquete'];?> ">		
+				<input type="hidden" name="paquete_id" value="<?php echo $_GET['paquete'];?> ">	
+
+				<div class="span6">
+					<div class="control-group">
+						<label>¿Desea asignar obsequios al paquete?</label>
+						<label class="radio">
+		                    <input type="radio" name="date" id="date1" value="hoy" onchange="javascript:showRegalo()" checked> NO
+		                </label>
+		                <label class="radio">
+		                    <input type="radio" name="date" id="date2" value="periodo" onchange="javascript:showRegalo()"> SI
+		                </label>
+					</div>
+				</div>	
+				<div class="span6">
+					<div class="control-group" id="content2" style="display: none;">
+						<label><strong>Obsequios para el paquete:</strong></label>
+						<input class="form-control span6 chosen" id="obsequio" name="obsequio" title="No ha indicado ningun obsequio, desmarque la opcion si no desea enviarlo." >
+						<select  class="form-control span6 chosen" id="obsequio" name="obsequio" title="No ha indicado ningun obsequio, desmarque la opcion si no desea enviarlo.">
+							<option value=""></option>
+							<?php $li = mysql_query("SELECT * FROM lista_tratamientos ORDER BY nombre ASC "); ?>
+							<?php while ($lis = mysql_fetch_assoc($li)) { ?>
+							 <option><?php echo $lis['nombre']; ?></option>
+							<?php } ?>
+						</select>
+					</div>
+				</div>
 
 			<table class="table ">
 				<thead>
@@ -234,16 +267,16 @@ include("../../PHP/funciones.php");
 						</td>
 
 						<td width="">
-							<div class="cuerpo">
+								<div class="cuerpo">
 								<select name="parte[]" class="form-control partes">
-									<option></option><option>Area del bikini</option><option>Cuero cabelludo</option><option>Axilas</option>
-									<option>Cara</option><option>Cara y Cuello</option><option>Pecho</option><option>Espalda</option>
-									<option>Brazos</option><option>Gluteos</option><option>Muslos</option><option>Piernas</option><option>Cicatriz</option>
-									<option>Cicatrices</option><option>Manos</option><option>Parpados</option><option>Boso</option><option>Papada</option>
-									<option>Revolvera</option><option>Abdomen</option><option>Abdomen y Cintura</option><option>Cintura</option>
-									<option>Cara Femenina</option><option>Cara y Cuello Femenina</option><option>Cara Masculina</option><option>Cara y cuello masculina</option>
+									<option value=""> </option>
+									<?php 
+										$part = mysql_query("SELECT * FROM ajustes_partescuerpo ORDER BY parte ASC");
+										while ($par = mysql_fetch_assoc($part)) { ?>
+												<option><?php echo $par['parte']; ?></option>
+										<?php } ?>
 								</select>
-							</div>
+								</div>
 						</td>
 
 						<td width="" align="center">
@@ -306,7 +339,7 @@ include("../../PHP/funciones.php");
 				<input type="hidden" name="paciente" value="<?php echo $id; ?>">
 				<div class="input-append">
 					<input type="text" name="nombre" class="span3" placeholder="Nombre del Paquete" required title="Ingrese un nombre para el paquete">
-					<button type="submit" class="btn btn-default">Agregar nuevo paquete</button>
+					<button type="submit" class="btn">Agregar nuevo paquete</button>
 				</div>				
 			</form>
 			
@@ -480,7 +513,7 @@ include("../../PHP/funciones.php");
 				<div class="row-fluid">
 				<div class="checkbox">
 					<div class="span6">
-							<div class="row-fluid">
+						<div class="row-fluid">
 							<div class="span6 examenes">
 							<ul>
 								<li>
@@ -525,11 +558,11 @@ include("../../PHP/funciones.php");
 								Examen simple de orina
 								</li> <br>
 								</ul>
-								</div>
+							</div>
 
 
 
-								<div class="span6 examenes">
+							<div class="span6 examenes">
 								<ul>
 								<li>
 								<input type="checkbox" name="item[]" value="Examen simple de heces">
@@ -574,30 +607,32 @@ include("../../PHP/funciones.php");
 								Otro
 								</li><br>
 								</ul>
-								<div class="control-group" id="content" style="display: none;">
+								
+							</div>
+						</div>
+						<div class="">
+							<div class="control-group" id="content" style="display: none;">
 								<label class="control-label" for="">Otro Examen:</label>
 								<div class="controls">
-								<input type="text" name="item[]" class="form-control">
+									<input type="text" name="item[]" class="form-control">
 								</div> <!-- /controls -->
-								</div>
-								</div>
-								</div>
-								</div>
-								</div>
-								<div class="span5">
-
-							<h3>Examenes solicitados:</h3>
-							<?php include("../../PHP/recepcion/consulta_examenes_solicitados.php"); ?>
-
+							</div>
+							<br>
 						</div>
+					</div>
 				</div>
+			<div class="span5">
+				<h3>Examenes solicitados:</h3>
+				<?php include("../../PHP/recepcion/consulta_examenes_solicitados.php"); ?>
+			</div>
+		</div>
 
 
-				<div class="form-actions">
-					<button type="submit" class="btn btn-primary">Actualizar</button>
-					<button class="btn">Cancelar</button>
-				</div>
-			</form>
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary">Actualizar</button>
+		<button class="btn">Cancelar</button>
+	</div>
+</form>
 
 		</div>
 <!-- //////////////////////////////////////////////////////////////////////////////////////////// -->
@@ -1075,3 +1110,19 @@ $(document).ready(function(){
         $('.autocomplete').autocomplete();
     });
 </script>
+
+<script type="text/javascript">
+ function showRegalo() {
+     element = document.getElementById("content2");
+     obsequio = document.getElementById("obsequio");
+     check = document.getElementById("date2");
+     if (check.checked) {
+         element.style.display='block';
+         obsequio.setAttribute('required','required'); //atributo y valor
+        }
+     else {
+         element.style.display='none';
+         obsequio.removeAttribute('required');
+     }
+ }
+ </script>

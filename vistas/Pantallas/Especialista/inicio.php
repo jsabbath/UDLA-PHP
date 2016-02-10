@@ -11,9 +11,9 @@ $hoy = date('Y-m-d');
 ?>
 
        
-      <div class="container">
+        <div class="container">
         <br>
-            <div class="row-fluid">
+             <div class="row-fluid">
 <!--//////////////////////////////////////////////////////////////////////////-->
 <!--//////////////////////////////////////////////////////////////////////////-->
 <!--//////////////////////////////////////////////////////////////////////////-->
@@ -23,44 +23,49 @@ $hoy = date('Y-m-d');
      
  <div class="span6">
 
-      <div class="widget">
-        <div class="widget-header">
+            <div class="widget">
+          <div class="widget-header">
             <i class="icon-user"></i>
             <h3>Paciente registrado</h3>
-        </div> <!-- /widget-header -->
+          </div> <!-- /widget-header -->
           
-        <div class="widget-content inicio">
-            <div class="posicion">      
-            <form  id="formulario" method="post" action="../../PHP/especialista/buscar_paciente.php">
+          <div class="widget-content inicio">
+      <div class="posicion">      
+           <form  id="formulario" method="post" action="../../PHP/especialista/buscar_paciente.php">
       
           <div class="login-fields">
               <?php 
               if(isset($_GET['error'])){
-                  echo '<center class="alert alert-error paciente"><button type="button" class="close" data-dismiss="alert">×</button>Paciente no Registrado</center>';
+               echo '<center class="alert alert-error paciente"><button type="button" class="close" data-dismiss="alert">×</button>Paciente no Registrado</center>';
                }
                ?>
-              <center><p class="texto">Introduzca la cedula del paciente</p>    
-                 <div class="field"><i class="icon-pencil cedula"></i>
-                    <select name="ci" class="span1">
-                      <option>V</option>
-                      <option>E</option>
-                      <option>P</option>
-                    </select>
-                    <input type="text" id="cedula" name="cedula" value="" placeholder="Cedula" class="login username-field" />
-                 </div> <!-- /field -->
-              </center>            
+          <center><p class="texto">Introduzca la cedula del paciente</p>
+     
+           <div class="field"><i class="icon-pencil cedula"></i>
+            <select name="ci" class="span1">
+              <option>V</option>
+              <option>E</option>
+              <option>P</option>
+
+            </select>
+            <input type="text" id="cedula" name="cedula" value="" placeholder="Cedula" class="login username-field" />
+           </div> <!-- /field -->
+          </center>
+             
            </div> <!-- /login-fields -->
       
-          <div class="login-actions">  
-              <center>   
-                <input class="button btn btn-success btn-large" type="submit" name="aceptar" value="Buscar" class="aceptar">        
-              </center>
+          <div class="login-actions">
+        
+     
+         <center>   <input class="button btn btn-success btn-large" type="submit" name="aceptar" value="Buscar" class="aceptar">       
+       
+        </center>
          </div> <!-- .actions -->
      </div>
-        </form>
-  </div> <!-- /widget-content -->
-  
-  </div> <!-- /widget -->
+                    </form>
+                  </div> <!-- /widget-content -->
+                  
+                  </div> <!-- /widget -->
   <!-- /////////////////////////////////////////////////////////////////////////////////////////-->
 <!-- /////////////////////////////////////////////////////////////////////////////////////////-->
 <!-- ///////////////////////////////Cuarto cuadro/////////////////////////////////////////////-->
@@ -69,37 +74,41 @@ $hoy = date('Y-m-d');
 <!-- /////////////////////////////////////////////////////////////////////////////////////////-->                
   
 
-    <div class="widget">
-      <div class="widget-header ">
-        <i class="icon-star"></i>
-        <h3>Pacientes en cabina</h3>
-      </div> <!-- /widget-header -->
+  <div class="widget">
+          <div class="widget-header ">
+            <i class="icon-star"></i>
+            <h3>Pacientes en cabina</h3>
+          </div> <!-- /widget-header -->
           
-      <div class="widget-content inicio_especialista">      
+                   
+
+  <div class="widget-content inicio_especialista">
+          
            <div class="posicion segunda">    
-              <div class="table-responsive" >
-                <table class="display table table-hover" id="">
+                  <div class="table-responsive" >
+                  <table class="display table table-hover" id="">
                   <thead>
-                    <tr>
-                      <th>Nombre</th>
-                      <th>Area</th>
-                      <th>Procedimiento</th>
-                      <th>Estado</th>
-                      <th >Acciones</th>
-                    </tr>
+                  <tr>
+                  <th>Nombre</th>
+                  <th>Area</th>
+                  <th>Estado</th>
+                  <th >Acciones</th>
+
+                  </tr>
                   </thead>
                   <tbody> 
 
-                     <?php 
-                      $datos_cabina = mysql_query("SELECT * FROM citas WHERE
-                                      fecha = '{$hoy}' AND
-                                      status = 15 AND
-                                      (remitido = 'Cabina' OR remitido = 'Recidente')
-                                      ");
-                      while($datos_3 = mysql_fetch_assoc($datos_cabina)){ 
-                      ?>
+                 <?php 
+                  $datos_cabina = mysql_query("SELECT * FROM citas WHERE
+                                  fecha = '{$hoy}' AND
+                                  status = 15 AND
+                                  (remitido = 'Cabina' OR remitido = 'Recidente')
+                                  ");
+                  while($datos_3 = mysql_fetch_assoc($datos_cabina)){ 
+                ?>
 
                   <tr class="odd gradeX">
+
                     <td>
                       <?php
                         $name_2 = mysql_query("SELECT nombre_completo FROM pacientes WHERE 
@@ -113,10 +122,9 @@ $hoy = date('Y-m-d');
                         <div class="proceso parpadea_2 font-normal">En Proceso</div>
                     </td>                                 
                     <td> 
-                                         
+                        <a class="btn" href="ver_historial.php?paciente=<?php echo $paciente_3['id']; ?>&cita=<?php echo $datos_3['id']; ?>">ver</a>                  
                     </td>                                 
                     <td> 
-                        <a class="btn" href="ver_historial.php?paciente=<?php echo $paciente_3['id']; ?>&cita=<?php echo $datos_3['id']; ?>">ver</a> 
                         <a class="btn" href="../../PHP/especialista/debug.php?paciente=<?php echo $paciente_3['id']; ?>&cita=<?php echo $datos_3['id']; ?>">Eliminar</a>
                     </td> 
                   </tr>

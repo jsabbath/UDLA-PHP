@@ -1,25 +1,10 @@
-<?php 
-$header=1;
-$activo=6;
-require('../../header.php');?>
-<?php include("../../PHP/paciente/consultas_historia.php"); ?>
-<link href="../../../datatables/dataTables.bootstrap.css" rel="stylesheet">
 
-
-		<div class="container">
-    <br>
-			<div class="row">
-				<div class="span12">
 					<div class="widget">
-						<div class="widget-header">
-						    <div class="span9">
-                    <i class="icon-file"></i> <h3>Listado de Procedimientos</h3>
-                </div>
-                <div class="pull-right">
-                    <a href="#myModalAdd" role="button" data-toggle="modal" class="btn btn-success font-normal">
-                      <i class="icon-plus agregar"> Nuevo Procedimiento</i>
-                    </a>
-                </div>
+						<div class="widget-header">						    
+                    <i class="icon-file"></i><h3>Listado de Procedimientos</h3>
+                    <button type="button" onclick="modalAdd();" class="btn btn-inverse centrar-btn pull-right">
+                       Nuevo Procedimiento
+                    </button>
 						</div>	
 						<div class="widget-content">
               <?php 
@@ -50,7 +35,7 @@ require('../../header.php');?>
                     </center>';
               <?php  }  ?>
 							<div class="table-responsive">
-							  <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+							  <table class="table table-bordered table-hover table-condensed datatables" id="datatables2">
                  <thead>
 							      <tr>
 							        <th>Nro</th>
@@ -67,17 +52,24 @@ require('../../header.php');?>
 							      	  $n=0;
 							          while($datos=mysql_fetch_assoc($procedimientos)){ 
                     ?>
-
-							        <tr class="odd gradeX">
-							          	<td><?php echo $datos['id'];?> </td>
-							          	<td><?php echo $datos['nombre'];?> </td>
-                          <td><?php echo $datos['nomenclatura'];?> </td>
-							          	<td><?php echo $datos['precio'];?> Bsf</td>
-							          	<td>
-							          		<a class="btn btn-default" href="<?php echo "#myModalEdit".$i; ?>" role="button" data-toggle="modal"><i class="icon-edit"></i> Editar</a>
-							          		<a class="btn btn-default" href="<?php echo "#myModalDelete".$n; ?>" role="button" data-toggle="modal"><i class="icon-trash"></i> Eliminar</a> 
-							          	</td>
-							        </tr>
+  							        <tr class="odd gradeX">
+  							          	<td><?php echo $datos['id'];?> </td>
+  							          	<td><?php echo $datos['nombre'];?> </td>
+                            <td><?php echo $datos['nomenclatura'];?> </td>
+  							          	<td><?php echo number_format($datos['precio']);?> Bsf</td>
+  							          	<td>
+                              <div class="btn-group">
+                                <button class="btn btn-info dropdown-toggle btn-small" data-toggle="dropdown">
+                                  Selecciona
+                                  <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                  <li><a href="<?php echo "#myModalEdit".$i; ?>" role="button" data-toggle="modal"><i class="icon-edit"></i> Editar</a></li>
+                                  <li><a href="<?php echo "#myModalDelete".$n; ?>" role="button" data-toggle="modal"><i class="icon-trash"></i> Eliminar</a></li>
+                                </ul>
+                              </div>
+  							          	</td>
+  							        </tr>
   
   <!-- //////////////////////// Modal Editar Procedimiento ///////////////////////////////////-->
 			        	<div id="<?php echo "myModalEdit".$i; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -99,7 +91,7 @@ require('../../header.php');?>
                         <div class="control-group">
                           <label class="control-label" for="">Nomenclatura:</label>
                           <div class="controls ">
-                            <input type="text" name="nomenclatura" class="form-control span2" value="<?php echo $datos['nomenclatura']; ?>" required>
+                            <input type="text" name="nomenclatura" class="form-control span2" value="<?php echo $datos['nomenclatura']; ?>">
                           </div> <!-- /controls -->     
                         </div>
                     		<div class="control-group">											
@@ -112,9 +104,9 @@ require('../../header.php');?>
 
                   	<div class="modal-footer">
                     	<button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-                    	<button name="modal" type="submit" class="btn btn-primary">Guardar</button>                   	
+                    	<button name="modal" type="submit" class="btn btn-primary">Guardar</button> 
+                      </form>                  	
                   	</div>
-                    </form>
                 </div>
 
 <!-- ////////// Modal Eliminar /////////////////-->
@@ -142,8 +134,12 @@ require('../../header.php');?>
                   }
 							} ?>
 							    </tbody>
-							  </table>	
+							  </table>
+                <br>
+              </div>
                   <hr>
+
+
                   <div id="cabioprecios">
                       <center>
                         <h4>Cambio de Precios</h4>
@@ -177,9 +173,8 @@ require('../../header.php');?>
                       </center>   
                   </div>
                 			  
-							</div>
-						</div>
-					</div>
+						
+						
 
 <!-- ////////// Modal agregar /////////////////-->
 
@@ -214,13 +209,12 @@ require('../../header.php');?>
               <div class="modal-footer">
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
                 <button name="modal" type="submit" class="btn btn-primary">Guardar</button>
-                
+                </form>
               </div>
-              </form>
+              
           </div>
 
-
-				</div>
+				
        
 
 			</div>		
@@ -228,20 +222,3 @@ require('../../header.php');?>
 
 
 <!-- ////////// Modal Nuevo tratamiento/////////////////-->
-
-
-
-
-
-
-
-<script src="../../../datatables/dataTables.bootstrap.js"></script>
-<script src="../../../datatables/jquery.dataTables.js"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-  $('#dataTables-example').dataTable();
-});
-</script>
-
-
-<!-- Parse error: syntax error, unexpected end of file in D:\xampp\htdocs\vistas\Pantallas\Especialista\procedimientos.php on line 244 -->

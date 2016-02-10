@@ -13,14 +13,13 @@ if ($reporte) {
 	$cita_numero = mysql_query("UPDATE citas SET status = 3 WHERE id = '{$cita}' AND paciente_id = '{$paciente}' LIMIT 1 ");
  
   $sesion = mysql_query("SELECT * FROM sesiones_procedimientos WHERE id = '{$sesion_id}' AND tratamiento_id = '{$id}' LIMIT 1 ");
-$data_sesion = mysql_fetch_assoc($sesion);
+	$data_sesion = mysql_fetch_assoc($sesion);
 
-$tratamientos = mysql_query("SELECT * FROM tratamientos WHERE id = '{$id}' AND paciente_id = '{$paciente}' LIMIT 1 ");
-$data_tratamiento = mysql_fetch_assoc($tratamientos);
+	$tratamientos = mysql_query("SELECT * FROM tratamientos WHERE id = '{$id}' AND paciente_id = '{$paciente}' LIMIT 1 ");
+	$data_tratamiento = mysql_fetch_assoc($tratamientos);
 
-/*echo "cantidad tratamiento: " .$data_tratamiento['cantidad'];
-
-echo "nro de sesion: " . $data_sesion['nro'];*/
+	/*echo "cantidad tratamiento: " .$data_tratamiento['cantidad'];
+	echo "nro de sesion: " . $data_sesion['nro'];*/
 if ($data_tratamiento['cantidad'] == $data_sesion['nro'] ) 
 {
 	$editar = mysql_query("UPDATE tratamientos SET status = 2, updated_at = NOW() WHERE id = '{$id}' AND paciente_id = '{$paciente}' LIMIT 1 ");

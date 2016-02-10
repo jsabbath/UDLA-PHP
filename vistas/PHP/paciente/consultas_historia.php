@@ -48,7 +48,7 @@ else
 
 //consulta si elñ paciente posee paquete
 $paquetes_pac = mysql_query("SELECT * FROM paquetes WHERE  paciente_id ='{$id}' ORDER BY created_at DESC");
- 
+
 // ************ Consulta disgnosticos del paciente
 $tabla_diagnosticos = mysql_query("SELECT * FROM diagnosticos WHERE paciente_id = '{$id}'");
 

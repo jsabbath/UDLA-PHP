@@ -58,6 +58,7 @@ include("../../PHP/funciones.php");
 										<th>Total</th>
 										<th>Creado</th>
 										<th>Ultimo Pago</th>
+										<th>Obsequio</th>
 										<th>Acción</th>
 									</tr>
 							<?php
@@ -70,6 +71,7 @@ include("../../PHP/funciones.php");
 										<td><?php echo $lista_paq['monto_total']; ?> Bs.</td>
 										<td><?php echo $lista_paq['created_at']; ?></td>
 										<td><?php echo $lista_paq['update_at']; ?></td>
+										<td><?php echo $lista_paq['regalo']; ?></td>
 										<td>
 											<a href="#myModalNew" role="button" data-toggle="modal" class="btn btn-default"><i class="icon-plus"></i> Tratamiento</a>
 											<a href="../../PHP/especialista/eliminar_paquete.php?paquete=<?php echo $lista_paq['id'];?>&paciente=<?php echo $id; ?>" class="btn btn-default"><i class="icon-trash"></i> Eliminar Paquete</a>
@@ -174,31 +176,11 @@ include("../../PHP/funciones.php");
                   			<label class="control-label" for="">Parte del Cuerpo:</label>
                   			<select name="parte" class="form-control" required>
                   				<option><?php echo $lista_trat['parte']; ?></option>
-                  				<option>Area del bikini</option>
-							<option>Cuero cabelludo</option>
-							<option>Axilas</option>
-							<option>Cara</option>
-							<option>Cara y Cuello</option>
-							<option>Pecho</option>
-							<option>Espalda</option>
-							<option>Brazos</option>
-							<option>Gluteos</option>
-							<option>Muslos</option>
-							<option>Piernas</option>
-							<option>Cicatriz</option>
-							<option>Cicatrices</option>
-							<option>Manos</option>
-							<option>Parpados</option>
-							<option>Boso</option>
-							<option>Papada</option>
-							<option>Revolvera</option>
-							<option>Abdomen</option>
-							<option>Abdomen y Cintura</option>
-							<option>Cintura</option>
-							<option>Cara Femenina</option>
-							<option>Cara y Cuello Femenina</option>
-							<option>Cara Masculina</option>
-							<option>Cara y cuello masculina</option>
+                  				<?php 
+                  					$part2 = mysql_query("SELECT * FROM ajustes_partescuerpo ORDER BY parte ASC");
+                  					while ($par2 = mysql_fetch_assoc($part2)) { ?>
+                  							<option><?php echo $par2['parte']; ?></option>
+                  					<?php } ?>
                   			</select>				
                   		</div>
                   	</div>
@@ -318,31 +300,11 @@ include("../../PHP/funciones.php");
                   			<label class="control-label" for="">Parte del Cuerpo:</label>
                   			<select name="parte" class="form-control">
                   				<option value=""></option>
-                  				<option>Area del bikini</option>
-							<option>Cuero cabelludo</option>
-							<option>Axilas</option>
-							<option>Cara</option>
-							<option>Cara y Cuello</option>
-							<option>Pecho</option>
-							<option>Espalda</option>
-							<option>Brazos</option>
-							<option>Gluteos</option>
-							<option>Muslos</option>
-							<option>Piernas</option>
-							<option>Cicatriz</option>
-							<option>Cicatrices</option>
-							<option>Manos</option>
-							<option>Parpados</option>
-							<option>Boso</option>
-							<option>Papada</option>
-							<option>Revolvera</option>
-							<option>Abdomen</option>
-							<option>Abdomen y Cintura</option>
-							<option>Cintura</option>
-							<option>Cara Femenina</option>
-							<option>Cara y Cuello Femenina</option>
-							<option>Cara Masculina</option>
-							<option>Cara y cuello masculina</option>
+                  				<?php 
+                  					$part = mysql_query("SELECT * FROM ajustes_partescuerpo ORDER BY parte ASC");
+                  					while ($par = mysql_fetch_assoc($part)) { ?>
+                  							<option><?php echo $par['parte']; ?></option>
+                  					<?php } ?>
                   			</select>				
                   		</div>
 

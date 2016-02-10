@@ -110,9 +110,9 @@
 							<tbody>
 								<tr>
 									<td> <span class="label label-success"><?php echo $paq_ap['status']; ?></span>  </td>
-									<td><strong><?php echo number_format($paq_ap['total'], 2, "'", "."); ?> Bs.f </strong> </td>
-									<td> <?php echo number_format($paq_ap['abonado'], 2, "'", "."); ?> Bs.f</td>
-									<td> <?php echo number_format($paq_ap['restante'], 2, "'", "."); ?> Bs.f</td>
+									<td><strong><?php echo number_format($paq_ap['total']); ?> Bs.f </strong> </td>
+									<td> <?php echo number_format($paq_ap['abonado']); ?> Bs.f</td>
+									<td> <?php echo number_format($paq_ap['restante']); ?> Bs.f</td>
 									<td> <?php echo $paq_ap['descuento']; ?> </td>
 									<td><center><span class="badge "><?php echo $paq_ap['citas']; ?></span></center>  </td>
 									<td><center><span class="badge badge-success"><?php echo $paq_ap['cita_created']; ?></span></center>  </td>
@@ -153,10 +153,10 @@
 								<tr>
 									<td><?php echo $proc['cantidad']; ?></td>
 									<td colspan="2"> <?php echo $proc['nombre']; ?></td>
-									<td><?php echo $proc['precio']; ?> bs.f</td>
+									<td><?php echo number_format($proc['precio']); ?> bs.f</td>
 									<td>
 										<?php $total_u = $proc['cantidad'] * $proc['precio']; 
-											echo $total_u;
+											echo number_format($total_u);
 										?> bs.f
 									</td>
 									<?php $total = $total + $total_u; ?>
@@ -171,7 +171,7 @@
 								<tr>
 									<td></td>
 									<td colspan="2" ><strong class="text-right">TOTAL UNITARIO:</strong></td>
-									<td><strong><?php echo $total; ?> Bs.f</strong> </td>
+									<td><strong><?php echo number_format($total); ?> Bs.f</strong> </td>
 									<td></td>
 								</tr>
 								<?php 
@@ -183,7 +183,7 @@
 									<tr>
 										<td></td>
 										<td colspan="2">5%</td>
-										<td><strong><?php echo $descu; ?> Bs.f</strong></td>
+										<td><strong><?php echo number_format($descu); ?> Bs.f</strong></td>
 										<td></td>
 										
 									</tr>								
@@ -196,7 +196,7 @@
 									<tr>
 										<td></td>
 										<td colspan="2">10%</td>
-										<td><strong><?php echo $descu; ?> Bs.f</strong></td>
+										<td><strong><?php echo number_format($descu); ?> Bs.f</strong></td>
 										<td></td>
 										
 									</tr>								
@@ -209,7 +209,7 @@
 								<tr>
 									<td></td>
 									<td colspan="2"><p class="text-right">Total:</p></td>
-									<td><strong><?php echo number_format($total_pagar, 2, "'", "."); ?> Bs.f</strong></td>
+									<td><strong><?php echo number_format($total_pagar); ?> Bs.f</strong></td>
 									<td>Contado</td>
 								</tr>
 								
@@ -274,7 +274,7 @@
 							    	<div class="control-group">
 							    		<label class="control-label"><strong>Monto a Pagar:</strong></label>
 							    		<input type="hidden" id="total" value="" >
-							    		<input type="text" class="span2" name="monto" id="monto" required readonly value="<?php echo $total_pagar; ?>" > <strong>Bs.f</strong>
+							    		<input type="text" class="span2" name="monto" id="monto" required readonly value="<?php echo number_format($paq_ap['restante']); ?>" > <strong>Bs.f</strong>
 							    		<p style="display:none;" id="msg" class="text-error">El monto ingresado es incorrecto.</p>
 							    	</div>
 
@@ -333,8 +333,8 @@
 					</div>
 					</center>	
 			    	<div class="control-group">
-			    		<p><strong>Inicial a Pagar 65%:</strong> <?php echo number_format($inicial, 2, "'", "."); ?> Bs </p>
-			    		<p><strong>2 Cuotas de:</strong> <?php echo number_format($cuota, 2, "'", ".");?> Bs o <br> <strong>3 Cuotas de:</strong> <?php echo number_format($cuota3, 2, "'", "."); ?> Bs</p>
+			    		<p><strong>Inicial a Pagar 65%:</strong> <?php echo number_format($inicial); ?> Bs </p>
+			    		<p><strong>2 Cuotas de:</strong> <?php echo number_format($cuota);?> Bs o <br> <strong>3 Cuotas de:</strong> <?php echo number_format($cuota3); ?> Bs</p>
 			    		<label class="control-label"><strong>Monto a Pagar:</strong></label>
 			    		<input type="hidden" id="total" value="" >
 			    		<input type="number" class="span2" name="monto" id="monto_cre" required min="0"  value="" > <strong>Bs.f</strong>
