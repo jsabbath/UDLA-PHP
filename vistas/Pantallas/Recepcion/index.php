@@ -63,14 +63,15 @@ include "../../config/datos.php";
                 					?> 
 								</td>
 								<td>
-									<?php if($esperas['tipo'] == "Nuevo" OR $esperas['tipo'] == "Control"){ 
+									<?php if($esperas['tipo'] == "Nuevo" OR $esperas['tipo'] == "Control" OR $esperas['tipo'] == "Emergencia"){ 
 									        if($esperas['status_pago'] == 1){ ?>
 									          <span class="label label-success font14 labels"><i class="icon-ok"></i> Pagado</span>
 									<?php } else{ ?>
 									        <a href="pagar.php?cita=<?php echo $esperas['id']; ?>" class="btn btn-info btn-small"><i class="icon-credit-card"></i> Pagar</a>
 									<?php } 
 									} else {?>
-										<button type="button" data-toggle="tooltip" title="Ver Procedimientos del Paquete" class="btn btn-inverse btn-small"><i class="icon-asterisk"></i> Paquete</button>
+										<!--  boton de paquete - -->
+										<button onclick="verProcedimientos('<?php echo $esperas['paquete_ap_id']; ?>');" type="button" data-toggle="tooltip" title="Ver Procedimientos del Paquete" class="btn btn-inverse btn-small"><i class="icon-asterisk"></i> Paquete</button>
 									<?php } ?>
 									<?php if($esperas['status'] == 100) { ?>
 										 <!--  boton de cambiar status presente - -->
@@ -108,7 +109,6 @@ include "../../config/datos.php";
 				                <th width="150px">Nro de Móvil</th>
 				                <th>Motivo</th>
 				                <th>Dirigido A:</th>
-				                <th>PAQ</th>
 				                <th width="80px">Estado</th>
 				                <th>Acciones</th>
 			              	</tr>
@@ -129,7 +129,6 @@ include "../../config/datos.php";
 								<td><?php echo $today['telefono']; ?> </td>
 								<td><?php echo $today['tipo']; ?> </td>
 								<td><?php echo $today['remitido']; ?> </td>
-								<td></td>
 								<td>
 									<?php if($today['status']==0) {  ?>
 								  		<div class="confirmar segunda font-normal">Por Confirmar</div>
@@ -138,18 +137,20 @@ include "../../config/datos.php";
 								  	<?php } ?>
 								</td>
 								<td>
-									<?php if($today['tipo'] == "Nuevo" OR $today['tipo'] == "Control"){ 
-									    if($datos['status_pago'] == 1){
-									?>
+									<!--  boton paquete de procedimientos - -->
+									<?php if($today['remitido'] == 'Cabina' ){ ?>
+									    <button onclick="verProcedimientos('<?php echo $today['paquete_ap_id']; ?>');" type="button" data-toggle="tooltip" title="Ver Procedimientos del Paquete" class="btn btn-inverse btn-small"><i class="icon-asterisk"></i> Paquete</button>
+									<?php  } ?>
+									<!--  boton pago de citas- -->
+									<?php if($today['tipo'] == "Nuevo" OR $today['tipo'] == "Control" OR $today['tipo'] == "Emergencia"){ 
+									    if($datos['status_pago'] == 1){ ?>
 									    <span class="label label-success font14 labels"><i class="icon-ok"></i> Pagado</span>
-									<?php } 
-									    else
-									    { ?>
+									<?php } else { ?>
 									          <a href="pagar.php?cita=<?php echo $today['id']; ?>" class="btn btn-info btn-small"><i class="icon-credit-card"></i> Pagar</a>
 									<?php } 
 									} ?>
-								    <?php if($today['status'] == 0){ ?>
-								    	<!--  boton confirmar - -->
+									<!--  boton confirmar - -->
+								    <?php if($today['status'] == 0){ ?>	
 								    	<button onclick="cambiarStatus('<?php echo $today['id']; ?>','1');" type="button" data-toggle="tooltip" title="Confirmar Cita" class="btn btn-default btn-small"><i class="icon-ok"></i></button>
 								    <?php }
 								    elseif($today['status'] == 1) { ?>

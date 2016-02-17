@@ -82,3 +82,23 @@ function cancelarCita(id, nombre){
         //no pasa nada
     }
 }
+
+
+function verProcedimientos(paq_aprob){
+    var tabla = $('#datos');
+    $('#datos').empty();
+
+    if(paq_aprob == 0)
+    {
+        tabla.append("<tr><td colspan='5'> Esta cita no posee paquete aprobado relacionado </td></tr>");
+    }
+    else
+    {
+        $.get('../../PHP/recepcion/ver_procedimientos.php?paq='+paq_aprob+'', function(res){
+            $(res).each(function(key,value){
+                tabla.append("<tr><td>"+value.nombre+"</td> <td>"+value.parte+"</td> <td>"+value.cantidad+"</td> <td>"+value.precio+" Bs</td> </tr>")
+            });
+        });
+    }    
+    $('#myModalProc').modal('show');
+}

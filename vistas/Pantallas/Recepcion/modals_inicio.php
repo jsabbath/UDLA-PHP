@@ -2,17 +2,27 @@
 <div id="myModalProc" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Modal header</h3>
+    <h3 id="myModalLabel">Procedimientos del Paquete:</h3>
   </div>
   <div class="modal-body">
-    <p>One fine body…</p>
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th>Procedimientos</th>
+          <th>Parte</th>
+          <th>Sesiones</th>
+          <th>Precio</th>
+        </tr>
+      </thead>
+      <tbody id="datos">
+        
+      </tbody>
+    </table>
   </div>
   <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-primary">Save changes</button>
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
   </div>
 </div>
-
 
 <!-- Modal Diferir Fecha de la Cita-->
 <div id="myModalDiferir" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
