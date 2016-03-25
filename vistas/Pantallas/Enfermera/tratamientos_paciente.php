@@ -8,9 +8,7 @@ include("../../PHP/funciones.php");
 //consulta
 $tabla_pacientes = mysql_query("SELECT * FROM pacientes WHERE id = '{$id}' LIMIT 1 ");
 $paciente = mysql_fetch_assoc($tabla_pacientes);
-
 ?>
-
 <div class="container">
 <br>
 			<div class="widget">
@@ -18,12 +16,8 @@ $paciente = mysql_fetch_assoc($tabla_pacientes);
 					<i class="icon-user"></i>
 					<h3>Tratamientos para el Paciente</h3>
 					<?php if (isset($_GET['cita'])) { ?>
-					<a href="../../PHP/enfermera/despachar.php?cita=<?php echo $_GET['cita']; ?>" class="btn btn-danger despachar btn-small">Despachar Paciente</a>
-				
-				   <?php }else {  ?>
-                    <a href="../../PHP/enfermera/despachar.php?paciente=<?php echo $paciente['id']; ?>" class="btn btn-danger despachar btn-small">Despachar Paciente</a>
-				
-			   	   <?php	} ?>
+					<a href="../../PHP/enfermera/despachar.php?cita=<?php echo $_GET['cita']; ?>" class="btn btn-danger despachar btn-small">Despachar Paciente</a>	
+				   <?php } ?>
 					</div>  
 
 				<div class="widget-content">
@@ -37,8 +31,7 @@ $paciente = mysql_fetch_assoc($tabla_pacientes);
 				<h4>Cedula: <?php echo $paciente['cedula']; ?> </h4>
 				<h4>Telefono: <?php echo $paciente['telefono']; ?> </h4>
 				<small><strong>Correo:</strong> <?php echo $paciente['email']; ?> </small>
-		</div>
-
+			</div>
 			<div class="span3 sengunda">
 				<h4>Edad: <?php echo calculaedad($paciente['fecha_nacimiento']); ?>  </h4>
 				<h4>Sexo: <?php echo $paciente['sexo']; ?></h4>
@@ -50,11 +43,8 @@ $paciente = mysql_fetch_assoc($tabla_pacientes);
                 <h4>Dirección: <?php echo $paciente['direccion']; ?> </h4>
                 </div>
 
-		</div>
-					<hr>
-
+			</div> <hr>
 <!-- //////////////////////// TAGS //////////////////////////////// -->
-
 		<div class="tabbable">
 
 			<ul class="nav nav-tabs">
@@ -82,33 +72,18 @@ $paciente = mysql_fetch_assoc($tabla_pacientes);
 					<a href="../Especialista/ver_historial.php?paciente=<?php echo $paciente['id']; ?>" class="perfil">Control</a>
 				    </li>
 				 <?php } } ?>
-
-
-
-
 			</ul>
 
 			<div class="tab-content">
-<?php if ($_SESSION['id_nivel']==2) { ?>
+			<?php if ($_SESSION['id_nivel']==2) { ?>
 				<div class="tab-pane <?php if($act == ""){ echo "active";}?> " id="jsdiagnosticos">
 
 					<h3>Diagnosticos Anteriores:</h3>
-					<?php
-					$filas = mysql_num_rows($tabla_diagnosticos);
-					if($filas > 0) {
-					while ($diagnostico=mysql_fetch_assoc($tabla_diagnosticos)) { ?>
-						<div class="control-group">
-							<label class="control-label" for="">Fecha: <?php echo "Hace ".calcular_fechas($diagnostico['created_at'])." dias"; ?> </label>
-							<div class="controls">
-								<textarea class="span8 form-control" disabled> <?php echo $diagnostico['diagnostico']; ?> </textarea>
-							</div> <!-- /controls -->
-						</div> <hr>
-					<?php } }
-					else { ?>
-					<strong> No Existen diagnosticos anteriores para este paciente.</strong>
-					<?php } ?>
-
-
+					<div class="respuesta">
+						<?php include("../../PHP/especialista/consulta_diagnostico.php") ?>
+					</div>
+					<br>
+					
 				</div>
 				<?php } ?>
 
@@ -125,14 +100,14 @@ $paciente = mysql_fetch_assoc($tabla_pacientes);
 				<?php if(mysql_num_rows($tratamiento_marcha) > 0){?>
 				 <h3>Procedimiento en marcha:</h3> <hr>
 						<div class="table-responsive ">
-							<table class="table table-striped table-hover table-bordered">
+							<table class="table table-hover table-bordered table-condensed">
 								<thead>
 									<tr>
 										<th>Tratamiento</th>
 										<th>Frecuencia</th>
 										<th>Parametros</th>
 										<th>Sesiones</th>
-										<th>Acción</th>
+										<th width="15%">Acción</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -150,7 +125,11 @@ $paciente = mysql_fetch_assoc($tabla_pacientes);
 											<td><?php echo $nro; ?> de <?php echo $tratamiento_actual['cantidad']; ?> </td>
 
 								    <?php 	$cita=isset($_GET['cita'])?$_GET['cita']:""; ?>										
-											<td> <a href="../../PHP/enfermera/cambiar_status.php?cita=<?php echo $cita;?>&paciente=<?php echo $tratamiento_actual['paciente_id'];?>&id=<?php echo $tratamiento_actual['id'];?>" class="btn btn-default"><i class="icon-play"></i> Continuar</a> </td>							
+											<td> 
+											<?php if (isset($_GET['cita'])){ ?>			
+											<a href="../../PHP/enfermera/cambiar_status.php?cita=<?php echo $cita;?>&paciente=<?php echo $tratamiento_actual['paciente_id'];?>&id=<?php echo $tratamiento_actual['id'];?>" class="btn btn-default"><i class="icon-play"></i> Continuar</a> 
+											<?php } ?>
+											</td>							
 									<?php } ?>
 									</tr>
 								</tbody>
@@ -162,7 +141,7 @@ $paciente = mysql_fetch_assoc($tabla_pacientes);
 					
 
 					<div class="table-responsive ">
-						<table class="table table-striped table-hover table-bordered">
+						<table class="table table-condensed table-hover table-bordered">
 							<thead>
 								<tr>
 									<th>Tratamiento</th>
@@ -170,7 +149,7 @@ $paciente = mysql_fetch_assoc($tabla_pacientes);
 									<th>Sesiones</th>
 									<th>Frecuencia</th>
 									<th>Parametros</th>
-									<th>Acción</th>
+									<th width="15%">Acción</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -183,12 +162,11 @@ $paciente = mysql_fetch_assoc($tabla_pacientes);
 										<td><?php echo $tratamiento['parametros']; ?> </td>
 										<td>
 										  <?php  
-										  	//if(isset($_GET['cita'])){	
+										  	if(isset($_GET['cita'])){	
 										  		//$cita= $_GET['cita']; 
 										  	?>
 											 <a href="../../PHP/enfermera/cambiar_status.php?cita=<?php echo $cita;?>&paciente=<?php echo $tratamiento['paciente_id'];?>&id=<?php echo $tratamiento['id'];?>" class="btn btn-default"><i class="icon-play"></i> Aplicar</a> 
-											<?php //} ?>
-										
+											<?php } ?>										
 										
                                          <?php  if ($_SESSION['id_nivel']==1) { ?>
                                          <?php
@@ -221,14 +199,14 @@ $paciente = mysql_fetch_assoc($tabla_pacientes);
 					<h3>Procedimientos Completados:</h3>
 
 						<div class="table-responsive ">
-							<table class="table table-striped table-hover table-bordered">
+							<table class="table table-condensed table-hover table-bordered">
 								<thead>
 									<tr>
 										<th>Tratamiento</th>
 										<th>Frecuencia</th>
 										<th>Parametros</th>
 										<th>Fecha</th>
-										<th>Acción</th>
+										<th width="15%">Acción</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -246,36 +224,13 @@ $paciente = mysql_fetch_assoc($tabla_pacientes);
 						</div>
 						<?php } ?>
 				</div>
-     <div id="<?php echo "myModalmsj"; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    	<div class="modal-header">
-        	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        	<h3 id="myModalLabel"><i class="icon-folder-open"></i> Mensaje de notificacion  </h3>
-      	</div>
-      	<div class="modal-body">	
-      		
-      		<div class="diagnosticos-light">Para poder aplicar los tratamientos de los pacientes estos solo se mostraran y se podra tener acseso a realizarlos y aplicarlos si provienen apartir de una cita, 
-      		la forma correcta es que el paciente tenga una cita tomada con antelacion en recepcion y los medicos o enfermeras tomen el paciente de la sala de espera que se encuentra en su panel principal
-             y desidir cual o cuales tratamientos se le aplicara al dicho paciente
-      		</p></div>
-
-
-
-      	</div>
-      	<div class="modal-footer">
-        	<button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
-        	
-        	
-      	</div>
-    </div>
-
-
 <!-- ////////////// //////////////////////////////////////////// -->
 				<div class="tab-pane" id="jscasa">
 					<h3>Tratamientos del Paciente para aplicar en casa:</h3>
 
 					<?php if(mysql_num_rows($tratamientos_casa) > 0){?>
 					<div class="table-responsive ">
-						<table class="table table-striped table-hover table-bordered">
+						<table class="table table-condensed table-hover table-bordered">
 							<thead>
 								<tr>
 									<th>Tratamiento</th>
@@ -301,28 +256,14 @@ $paciente = mysql_fetch_assoc($tabla_pacientes);
 						</strong>
 					<?php } ?>
 				</div>
-
 <!-- ////////////// //////////////////////////////////////////// -->
 				<div class="tab-pane" id="jsexamenes">
 					<h3>Examenes Solicitados:</h3>
-						<?php if(mysql_num_rows($lista_examenes) > 0) {?>
-							<?php while($exam = mysql_fetch_assoc($lista_examenes)){ ?>
-									<li> <p> <?php echo $exam['examenes']; ?> </p> </li>
-							<?php } ?>
-						<?php }
-						else{ ?>
-							<strong>El no tiene examenes paciente solicitados.</strong>
-						<?php } ?>
+					<?php include("../../PHP/recepcion/consulta_examenes_solicitados.php"); ?>
 				</div>
-
 <!-- ////////////// //////////////////////////////////////////// -->
-
 			</div>
-
-
 		</div>
-
-
 <!-- ////////////////// END TAGS //////////////////////////////// -->
 				</div> <!-- fin widget content -->
 			</div><!-- fin widget -->

@@ -37,7 +37,7 @@ $re=mysql_query("SELECT * FROM usuarios WHERE usuario='".$_POST['Usuario']."' AN
           }
             elseif ($_SESSION['id_nivel']==3) {
           $_SESSION['usuario']=$arreglo;
-		  header("Location: ../Pantallas/Recepcion/inicio.php");
+		  header("Location: ../Pantallas/Recepcion/index.php");
           }
             elseif ($_SESSION['id_nivel']==4) {
            $_SESSION['usuario']=$arreglo;

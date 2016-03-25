@@ -56,8 +56,7 @@ function calcular(descuento, total, totaltext){
 			            </div>
 					</div>
 					<hr>
-<!-- /////////////////////////////////////Detalles del paquete////////////////////////////////////////// -->
-<!-- //////////////////////////////////////////////////////////////////////////////////////////// -->
+<!-- ///////////////////////////Detalles del paquete///////////////////////////// -->
 
 	<h3>Datos del paquete:</h3>
 	<?php 
@@ -80,8 +79,7 @@ function calcular(descuento, total, totaltext){
 	    </div>
 	<?php } ?>
 
-<!-- /////////////////////////////////////lista de procedimientos////////////////////////////////////////// -->
-<!-- //////////////////////////////////////////////////////////////////////////////////////////// -->
+<!-- //////////////////////////lista de procedimientos////////////////////////////// -->
 
 	<center>
 
@@ -141,12 +139,15 @@ function calcular(descuento, total, totaltext){
 						<?php echo $monto['precio']; ?> Bs.
 						<input type="hidden" name="monto[]" value="<?php echo $monto['precio']; ?>">
 					</td>
-					<td><?php  
-					$total = $monto['precio'] * $lista_trat['cantidad'];
-					echo $total;
-					?>Bs.
+					<td>
+						<?php  
+						$total = $monto['precio'] * $lista_trat['cantidad'];
+						echo $total;
+						?>Bs.
 					</td>
-					<td class="eliminar"><button class="btn"><i class=" icon-remove"></i>  Quitar</button></td>
+					<td class="eliminar">
+						<button class="btn"><i class=" icon-remove"></i> Quitar</button>
+					</td>
 
 				</tr>
 				<?php 

@@ -8,7 +8,15 @@ require('../../header.php');?>
 <script src="../../../datatables/jquery.dataTables.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-  $('#dataTables-example').dataTable();
+  $('#dataTables-example').dataTable({
+      "ajax": "../../PHP/especialista/datatables.php",          
+           "columns": [
+            { "data": "nombre_completo" },
+            { "data": "cedula" },
+            { "data": "telefono" },
+            { "data": "id" }
+            ]
+  });
 });
 </script>
 <div class="main">
@@ -35,15 +43,7 @@ $(document).ready(function() {
                     </tr>
                   </thead>
                   <tbody>
-                    <?php if($todos_pacientes){
-                        while($datos=mysql_fetch_assoc($todos_pacientes)){ ?>
-                      <tr class="odd gradeX">
-                        <td><?php echo $datos['nombre_completo']; ?></td>
-                         <td><?php echo $datos['cedula']; ?></td>
-                        <td><?php echo $datos['telefono'];  ?></td>
-                        <td><a class="btn btn-default " href="ver_historial.php?paciente=<?php echo $datos['id']; ?>">Ver Historial</a> </td>
-                      </tr>
-                      <?php } } ?>
+                    
                   </tbody>
                 </table>
                 

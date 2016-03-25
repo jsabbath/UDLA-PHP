@@ -6,9 +6,7 @@
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             <strong><?php echo $msg; ?> </strong>
         </div>
-<?php 
-	} ?>
-
+<?php } ?>
 
 <?php
 	$tab_diagnosticos = mysql_query("SELECT created_at FROM diagnosticos GROUP BY created_at, paciente_id HAVING paciente_id = '{$id}' ") ;

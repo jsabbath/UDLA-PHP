@@ -22,11 +22,9 @@ include("../../PHP/funciones.php");
 ?>
 
 
-<!-- //////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- //////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- /////////////////////////////////////Datos del paciente////////////////////////////////////////// -->
-<!-- //////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- //////////////////////////////////////////////////////////////////////////////////////////// -->
+<!-- ///////////////////////////Datos del paciente////////////////////////////// -->
+
+
 <div class="container">
 <br>
 <div class="widget">
@@ -91,10 +89,6 @@ include("../../PHP/funciones.php");
   </thead>
 
 </table>
-
-
-
-
 
 <?php  $c++; } ?>
 		<div class="form-actions">
@@ -227,8 +221,8 @@ include("../../PHP/funciones.php");
 				<div class="span6">
 					<div class="control-group" id="content2" style="display: none;">
 						<label><strong>Obsequios para el paquete:</strong></label>
-						<input class="form-control span6 chosen" id="obsequio" name="obsequio" title="No ha indicado ningun obsequio, desmarque la opcion si no desea enviarlo." >
-						<select  class="form-control span6 chosen" id="obsequio" name="obsequio" title="No ha indicado ningun obsequio, desmarque la opcion si no desea enviarlo.">
+						
+						<select multiple="multiple"  class="form-control span6 chosen" id="obsequio" name="obsequio[]" title="No ha indicado ningun obsequio, desmarque la opcion si no desea enviarlo.">
 							<option value=""></option>
 							<?php $li = mysql_query("SELECT * FROM lista_tratamientos ORDER BY nombre ASC "); ?>
 							<?php while ($lis = mysql_fetch_assoc($li)) { ?>
@@ -320,15 +314,9 @@ include("../../PHP/funciones.php");
       	<div class="control-group">
       		<button class="btn btn-primary" type="submit" >Registrar</button> 
       		</form>
-      	</div>
-		
-				
-		</div>
-		
-	
-		
+      	</div>			
+		</div>		
 	</div>
-	
 
 		<?php }
 		else
@@ -349,7 +337,7 @@ include("../../PHP/funciones.php");
 			if($filas_paq > 0)
 			{ ?>
 					<div class="table-responsive">
-						<table class="table table-hover">
+						<table class="table table-hover table-condensed">
 						<thead>
 							<tr>
 								<th>Nro</th>

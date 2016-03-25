@@ -25,8 +25,12 @@ include "../../config/datos.php";
 
 	if ($guarda) 
 	{
-		if (trim($obsequio) != "") {
-			$up = mysql_query("UPDATE paquetes SET regalo = '{$obsequio}' WHERE id = '{$paquete_id}' LIMIT 1");
+		if (count($obsequio) > 0) {
+			for ($i=0; $i < count($obsequio); $i++) { 
+				$regalo .= $obsequio[$i]." + ";
+			}
+			$regalo = rtrim($regalo, "+ ");
+			$up = mysql_query("UPDATE paquetes SET regalo = '{$regalo}' WHERE id = '{$paquete_id}' LIMIT 1");
 		}
 		header("Location: ../../Pantallas/Especialista/ver_historial.php?paciente=$id&paquete=$paquete_id&act=procedimientos");
 		exit();

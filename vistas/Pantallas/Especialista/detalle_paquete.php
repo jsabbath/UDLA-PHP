@@ -199,13 +199,16 @@ include("../../PHP/funciones.php");
                   			<div class="controls">
                   				<select name="frecuencia" class="form-control" required>
 								<option selected><?php echo $lista_trat['frecuencia']; ?></option>
-								<option>Unica</option>
-								<option>3 Dias</option>
-								<option>5 Dias</option>
-								<option>8 Dias</option>
-								<option>10 Dias</option>
-								<option>15 Dias</option>
-								<option>Mensualmente</option>
+								<option value="1">Unica</option>
+								<option value="3">3 Dias</option>
+								<option value="5">5 Dias</option>
+								<option value="7">7 dias</option>
+								<option value="8">8 Dias</option>
+								<option value="10">10 Dias</option>
+								<option value="12">12 Dias</option> 
+								<option value="15">15 Dias</option> 
+								<option value="21">21 Dias</option>
+								<option value="30">Mensualmente</option>
 							</select>
                   			</div> <!-- /controls -->				
                   		</div>
@@ -320,13 +323,16 @@ include("../../PHP/funciones.php");
                   			<div class="controls">
                   				<select name="frecuencia" class="form-control" required>
 								<option value="" selected>Seleccione</option>
-								<option>Unica</option>
-								<option>3 Dias</option>
-								<option>5 Dias</option>
-								<option>8 Dias</option>
-								<option>10 Dias</option>
-								<option>15 Dias</option>
-								<option>Mensualmente</option>
+								<option value="1">Unica</option>
+								<option value="3">3 Dias</option>
+								<option value="5">5 Dias</option>
+								<option value="7">7 dias</option>
+								<option value="8">8 Dias</option>
+								<option value="10">10 Dias</option>
+								<option value="12">12 Dias</option> 
+								<option value="15">15 Dias</option> 
+								<option value="21">21 Dias</option>
+								<option value="30">Mensualmente</option>
 							</select>
                   			</div> <!-- /controls -->				
                   		</div>

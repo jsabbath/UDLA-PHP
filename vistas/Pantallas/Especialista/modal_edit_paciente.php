@@ -37,7 +37,7 @@
               <div class="control-group">                     
                 <label class="control-label" for="">Fecha de Nacimiento:</label>
                 <div class="controls">
-                  <input  type="date" name="nacimiento" value="<?php echo $paciente['fecha_nacimiento']; ?>" class="form-control">
+                  <input  type="text" name="nacimiento" value="<?php echo $paciente['fecha_nacimiento']; ?>" id="datepicker" class="form-control ">
                 </div> <!-- /controls -->       
               </div>
 

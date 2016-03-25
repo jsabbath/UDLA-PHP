@@ -34,7 +34,7 @@ $pag = mysql_query("SELECT * FROM pagos WHERE fecha = '{$hoy}'"); //
 						$paq_1 = mysql_fetch_assoc($paq_todo);
 						$total_facturado = $total_1['total'] + $paq_1['total'];
 					?>
-					<center><p class="font16"> <strong><?php echo $total_facturado; ?> Bs.</strong></p></center>
+					<center><p class="font16"> <strong><?php echo number_format($total_facturado); ?> Bs.</strong></p></center>
 				</div>
 			</div>
 		</div>
@@ -60,7 +60,7 @@ $pag = mysql_query("SELECT * FROM pagos WHERE fecha = '{$hoy}'"); //
 						$paq_2 = mysql_fetch_assoc($paq_formas);
 						$pago_deb = $total_2['total'] + $paq_2['total'];
 					?>
-					<center><p class="font16"> <strong><?php echo $pago_deb; ?> Bs.</strong></p></center>
+					<center><p class="font16"> <strong><?php echo number_format($pago_deb); ?> Bs.</strong></p></center>
 				</div>
 			</div>
 		</div>
@@ -86,7 +86,7 @@ $pag = mysql_query("SELECT * FROM pagos WHERE fecha = '{$hoy}'"); //
 						$paq_ft = mysql_fetch_assoc($paq_efect);
 						$total_efectivo = $total_3['total'] + $paq_ft['total'];
 					?>
-					<center><p class="font16"> <strong><?php echo $total_efectivo; ?> Bs.</strong></p></center>
+					<center><p class="font16"> <strong><?php echo number_format($total_efectivo); ?> Bs.</strong></p></center>
 				</div>
 			</div>
 		</div>
@@ -104,7 +104,7 @@ $pag = mysql_query("SELECT * FROM pagos WHERE fecha = '{$hoy}'"); //
 									");
 						$total_4 = mysql_fetch_assoc($sum_4); 
 					?>
-					<center><p class="font16"> <strong><?php echo $total_4['total']; ?> Bs.</strong></p></center>
+					<center><p class="font16"> <strong><?php echo number_format($total_4['total']); ?> Bs.</strong></p></center>
 				</div>
 			</div>
 		</div>
@@ -121,7 +121,7 @@ $pag = mysql_query("SELECT * FROM pagos WHERE fecha = '{$hoy}'"); //
 									");
 						$total_5 = mysql_fetch_assoc($sum_5); 
 					?>
-					<center><p class="font16"> <strong><?php echo $total_5['total']; ?> Bs.</strong></p></center>
+					<center><p class="font16"> <strong><?php echo number_format($total_5['total']); ?> Bs.</strong></p></center>
 				</div>
 			</div>
 		</div>
@@ -135,7 +135,7 @@ $pag = mysql_query("SELECT * FROM pagos WHERE fecha = '{$hoy}'"); //
 					<?php 
 						$utilidad = $total_facturado - $total_5['total'];
 					?>
-					<center><p class="font16"> <strong><?php echo $utilidad; ?> Bs.</strong></p></center>
+					<center><p class="font16"> <strong><?php echo number_format($utilidad); ?> Bs.</strong></p></center>
 				</div>
 			</div>
 		</div>
@@ -195,7 +195,7 @@ $pag = mysql_query("SELECT * FROM pagos WHERE fecha = '{$hoy}'"); //
 							?>
 							
 	
-							<td><?php echo $pago['monto_total'];?> Bs.</td>
+							<td><?php echo number_format($pago['monto_total']);?> Bs.</td>
 							<td><?php echo $pago['forma']; ?></td>
 							<td><?php echo $pago['cod_operacion']; ?></td>
 							<td><?php echo $pago['tipo']; ?></td>
@@ -248,7 +248,7 @@ $pag = mysql_query("SELECT * FROM pagos WHERE fecha = '{$hoy}'"); //
 							<tr>
 								<td><?php echo $nro; $nro++; ?></td>
 								<td> <?php echo $paci['nombre_completo']; ?></td>
-								<td><strong><?php echo $pay['monto']; ?> Bs.</strong></td>
+								<td><strong><?php echo number_format($pay['monto']); ?> Bs.</strong></td>
 								<td><?php echo $pay['forma']; ?></td>
 								<td><?php echo $pay['cod_forma']; ?></td>
 								<td><?php echo $pay['tipo_pago']; ?></td>
@@ -260,7 +260,7 @@ $pag = mysql_query("SELECT * FROM pagos WHERE fecha = '{$hoy}'"); //
 								 	<span class="label">Pago sin Terminar</span> 
 								 <?php } ?>
 								</td>
-								<td><strong><?php echo $paqt['restante']; ?> Bs.</strong></td>
+								<td><strong><?php echo number_format($paqt['restante']); ?> Bs.</strong></td>
 								<td><?php echo $paqt['cita_created']; ?></td>
 								<td><?php echo $paqt['proximo_pago']; ?></td>
 							</tr>

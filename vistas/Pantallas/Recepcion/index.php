@@ -2,7 +2,7 @@
 $header=2;
 $activo=1; 
 date_default_timezone_set('America/Caracas');
-$hoy = date('2016-01-22');
+$hoy = date('2016-03-09');
 require('../../header.php');
 include "../../config/datos.php";
 ?>

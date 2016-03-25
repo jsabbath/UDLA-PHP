@@ -77,13 +77,45 @@ if ($aprobar) {
 			//*** creamos los nuevos tratamientos que fueron aprobados
 			$tratamiento = mysql_query("SELECT * FROM tratamientos WHERE id = '{$id[$i]}' LIMIT 1 ");
 			$trat = mysql_fetch_assoc($tratamiento);
+
+			if (!is_numeric($trat['frecuencia'])) {
+				if ($trat['frecuencia'] == 'Unica') {
+					$frec = 1;
+				}
+				elseif ($trat['frecuencia'] == '3 Dias') {
+					$frec = 3;
+				}
+				elseif ($trat['frecuencia'] == '5 Dias') {
+					$frec = 5;
+				}
+				elseif ($trat['frecuencia'] == '8 Dias') {
+					$frec = 8;
+				}
+				elseif ($trat['frecuencia'] == '10 Dias') {
+					$frec = 10;
+				}
+				elseif ($trat['frecuencia'] == '15 Dias') {
+					$frec = 15;
+				}
+				elseif ($trat['frecuencia'] == 'Mensualmente') {
+					$frec = 30;
+				}
+				else
+				{
+					$frec = 0;
+				}
+			}
+			else
+			{
+				$frec = $trat['frecuencia'];
+			}
 			
 			$nvo_tratamiento = mysql_query("INSERT INTO tratamientos_aprobados 
 				values(NULL, 
 					'{$trat['nombre']}', 
 					'{$trat['parte']}',
 					'{$cantidad[$i]}',
-					'{$trat['frecuencia']}',
+					'{$frec}',
 					'{$trat['parametros']}',
 					'Sin Aplicar',
 					'',

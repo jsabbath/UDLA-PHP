@@ -25,7 +25,7 @@ if (isset($_POST['contado'])) {
 
 	if ($reg_pago) {
 		// *****se calcula la cantidad de citas que tendra este paquete
-		$citas = mysql_query("SELECT cantidad FROM tratamientos_aprobados WHERE paqueteaprob_id = '{$paquete}' GROUP BY cantidad DESC LIMIT 1");
+		$citas = mysql_query("SELECT cantidad FROM tratamientos_aprobados WHERE paqueteaprob_id = '{$paquete}' GROUP BY cantidad ORDER BY cantidad DESC LIMIT 1");
 		$nro_citas = mysql_fetch_assoc($citas);
 
 		// actualizamos el paquete aprobado 
@@ -84,7 +84,7 @@ elseif (isset($_POST['credito'])) {
 				'$paciente',
 				NOW() ) ");
 		
-		$citas = mysql_query("SELECT cantidad FROM tratamientos_aprobados WHERE paqueteaprob_id = '{$paquete}' GROUP BY cantidad DESC LIMIT 1");
+		$citas = mysql_query("SELECT cantidad FROM tratamientos_aprobados WHERE paqueteaprob_id = '{$paquete}' GROUP BY cantidad ORDER BY cantidad DESC LIMIT 1");
 		$nro_citas = mysql_fetch_assoc($citas);
 		if($registrar)
 		{

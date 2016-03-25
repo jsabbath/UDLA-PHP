@@ -126,16 +126,6 @@
 
 					<?php } ?>
 
-
-
-
-
-
-
-
-
-
-
 					<table class="table table-bordered">
 						<thead>
 							<tr>
@@ -274,7 +264,7 @@
 							    	<div class="control-group">
 							    		<label class="control-label"><strong>Monto a Pagar:</strong></label>
 							    		<input type="hidden" id="total" value="" >
-							    		<input type="text" class="span2" name="monto" id="monto" required readonly value="<?php echo number_format($paq_ap['restante']); ?>" > <strong>Bs.f</strong>
+							    		<input type="text" class="span2" name="monto" id="monto" required value="<?php echo $paq_ap['restante']; ?>" > <strong>Bs.f</strong>
 							    		<p style="display:none;" id="msg" class="text-error">El monto ingresado es incorrecto.</p>
 							    	</div>
 
@@ -294,12 +284,10 @@
 					<input type="hidden" name="metodo" value="credito">
 				
 					<?php 
-						$inicial = $total_pagar * 0.65;
-						$cuota = ($total_pagar - $inicial) / 2;
-						$cuota3 = ($total_pagar - $inicial) / 3;
+						$inicial = $total * 0.65;
+						$cuota = ($total - $inicial) / 2;
+						$cuota3 = ($total - $inicial) / 3;
 					?>
-
-
 						<div class="control-group">
 			    		<label class="control-label"><strong>Forma de pago:</strong></label>
 			    		<select name="forma_pago" id="forma2" class="form-control" onchange="javascript:showContentCredit()">
@@ -337,7 +325,7 @@
 			    		<p><strong>2 Cuotas de:</strong> <?php echo number_format($cuota);?> Bs o <br> <strong>3 Cuotas de:</strong> <?php echo number_format($cuota3); ?> Bs</p>
 			    		<label class="control-label"><strong>Monto a Pagar:</strong></label>
 			    		<input type="hidden" id="total" value="" >
-			    		<input type="number" class="span2" name="monto" id="monto_cre" required min="0"  value="" > <strong>Bs.f</strong>
+			    		<input type="text" class="span2" name="monto" id="monto_cre" required min="0"  value="" > <strong>Bs.f</strong>
 			    		<span style="display:none;" id="msg" class="help-inline">El monto ingresado es incorrecto.</span>
 			    	</div>
 

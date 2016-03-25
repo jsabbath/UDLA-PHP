@@ -136,10 +136,17 @@ class PDF extends FPDF {
 				$this->Cell(90,6, number_format($cuotas). ' Bs',1,0,'C');
 				$this->Ln();
 			}
-			
+			if($paq_dato['regalo'] != 0)
+			{ 
+				$regalo = $paq_dato['regalo'];
+			}
+			else 
+			{
+				$regalo = " ";
+			}
 
 			$this->Cell(18,6,'Obsequio' ,1,0,'C');
-			$this->Cell(90,6, $paq_dato['regalo'],1,0,'C');
+			$this->Cell(90,6, $regalo ,1,0,'C');
 			$this->Ln();
 	}
 }

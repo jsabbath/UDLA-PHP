@@ -180,13 +180,47 @@
 					
 					<div class="control-group">
 						<?php 
-							$frecuencia = mysql_query("SELECT frecuencia FROM tratamientos_aprobados WHERE paqueteaprob_id = '{$paq}' GROUP BY frecuencia DESC LIMIT 1");
+							$frecuencia = mysql_query("SELECT frecuencia FROM tratamientos_aprobados WHERE paqueteaprob_id = '{$paq}' GROUP BY frecuencia ORDER BY frecuencia DESC LIMIT 1");
 					 
-					     		$frec = mysql_fetch_assoc($frecuencia); 
+					     		$frecu = mysql_fetch_assoc($frecuencia); 
 					    ?>
-					    
-					    <strong>En una Frecuencia de <?php echo $frec['frecuencia']; ?></strong>
-					    <input type="hidden" name="frecuencia" value="<?php echo $frec['frecuencia']; ?>">
+					    <?php 
+					    if (!is_numeric($frecu['frecuencia'])) {
+					    	if ($frecu['frecuencia'] == 'Unica') {
+					    		$frec = 1;
+					    	}
+					    	elseif ($frecu['frecuencia'] == '3 Dias') {
+					    		$frec = 3;
+					    	}
+					    	elseif ($frecu['frecuencia'] == '5 Dias') {
+					    		$frec = 5;
+					    	}
+					    	elseif ($frecu['frecuencia'] == '8 Dias') {
+					    		$frec = 8;
+					    	}
+					    	elseif ($frecu['frecuencia'] == '10 Dias') {
+					    		$frec = 10;
+					    	}
+					    	elseif ($frecu['frecuencia'] == '15 Dias') {
+					    		$frec = 15;
+					    	}
+					    	elseif ($frecu['frecuencia'] == 'Mensualmente') {
+					    		$frec = 30;
+					    	}
+					    	else
+					    	{
+					    		$frec = 0;
+					    	}
+
+					    }
+					    else
+					    {
+					    	$frec = $frecu['frecuencia'];
+					    }
+
+					     ?>
+					    <strong>En una Frecuencia de <?php echo $frec; ?> dias</strong>
+					    <input type="hidden" name="frecuencia" value="<?php echo $frec; ?>">
 					</div>
 
 					<button type="submit" class="btn btn-primary">Registrar</button>

@@ -21,7 +21,20 @@
 <script src="../../../js/udla.js"></script>
 <script src="../../../js/select/select2.min.js"></script>
 
- 
+<link href="../../../datepicker/css/bootstrap-datepicker.css" rel="stylesheet" >
+<script src="../../../datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="../../../datepicker/locales/bootstrap-datepicker.es.min.js"></script>
+
+<script type="text/javascript">
+  $('#datepicker').datepicker({
+        format: "yyyy-mm-dd",
+        startDate: "-1y",
+        endDate: "+0d",
+        language: "es",
+        autoclose: true,
+        todayHighlight: true
+    });
+</script>
 
 <?php @session_start(); ?>
 
@@ -149,7 +162,7 @@ elseif ($header==2) {
        <?php if ($_SESSION['id_nivel']==2 OR $_SESSION['id_nivel']==1 ) { ?>
        <li <?php if ($activo==1) { echo 'class="active"';  }?>><a href="./index.php"><i class="icon-th-large "></i><span>Inicio</span> </a> </li>
        <?php }else{ ?>
-        <li <?php if ($activo==1) { echo 'class="active"';  }?>><a href="./inicio.php"><i class="icon-th-large "></i><span>Inicio</span> </a> </li>
+        <li <?php if ($activo==1) { echo 'class="active"';  }?>><a href="./index.php"><i class="icon-th-large "></i><span>Inicio</span> </a> </li>
         <?php  }?>
         <li <?php if ($activo==2) { echo 'class="active"';  }?>><a href="todos_los_pacientes.php"><i class="icon-group"></i><span>Pacientes</span> </a> </li> 
         
