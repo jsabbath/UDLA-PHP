@@ -106,6 +106,48 @@ require('../../header.php');?>
 				</div>
 			</div>
 		</div>
+
+		<!-- 	//////////////// PANEL listado de diagnosticos //////////////////////////// -->
+		<div class="span6">
+			<div class="widget">
+				<div class="widget-header">
+					<i class="icon-group"></i> <h3>Listado de Diagnosticos</h3>
+				</div>
+				<div class="widget-content">
+					
+					<form action="" role="form" name="fmDiag" onsubmit="addDiags(); return false" accept-charset="utf-8" class="form-horizontal">
+						<div class="input-append">
+						  <input class="span3" name="patologia" type="text">
+						  <button class="btn" type="submit">Registrar</button>
+						</div>					
+					</form>
+					<hr>
+					<table class="table table-hover table-condensed datatables">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Diagnostico</th>
+								<th>Accion</th>
+							</tr>
+						</thead>
+						<tbody id="resultado-diag">
+							<?php 
+								$consulta_diag = mysql_query("SELECT * FROM patologias ORDER BY patologias ASC");
+								$n3 = 1;
+								while ($diag = mysql_fetch_assoc($consulta_diag)) { ?>				
+									<tr>
+										<td><?php echo $n3; $n3++; ?></td>
+										<td><?php echo utf8_encode($diag['patologias']); ?></td>
+										<td>
+											<button class="btn btn-danger btn-small" onclick="deleteDiag('<?php echo $diag['id']; ?>');">Eliminar</button>
+										</td>
+									</tr>							
+							<?php } ?>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 	<!-- 	//////////////// PANEL DATOS DE PROCEDIMIENTOS //////////////////////////// -->
 		<div class="span12">
 			<?php include("procedimientos.php"); ?>

@@ -19,52 +19,42 @@ $(document).ready(function() {
   });
 });
 </script>
-<div class="main">
   <div class="main-inner">
     <div class="container">
       <div class="row">
         <div class="span12">
-  
-                 <div class="widget">
-            <div class="widget-header"> <i class="icon-file"></i>
-              <h3> Mis Pacientes</h3>
-            </div>
-            <!-- /widget-header -->
-            <div class="widget-content">
-              
-              <div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                  <thead>
-                    <tr>
-                      <th>Nombre y Apellido</th>
-                      <th>Cedula</th>
-                      <th>Nro de Movil</th>
-                      <th>Acción</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    
-                  </tbody>
-                </table>
-                
+            <br>
+            <div class="widget">
+              <div class="widget-header"> <i class="icon-file"></i>
+                <h3> Mis Pacientes</h3>
               </div>
-  
+            <!-- /widget-header -->
+            <div class="widget-content">              
+              <div class="table-responsive">
+                  <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                      <thead>
+                          <tr>
+                            <th>Nombre y Apellido</th>
+                            <th>Cedula</th>
+                            <th>Nro de Movil</th>
+                            <th>Acción</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                        
+                      </tbody>
+                  </table>                
+              </div>  
             </div>  <!-- /widget-content hastaa aqui -->
             <!-- /widget-content --> 
-
           </div>
           <!-- /widget --> 
         </div>
-        <!-- /span6 -->
-        
+        <!-- /span6 -->      
       </div>
       <!-- /row --> 
     </div>
     <!-- /container --> 
   </div>
   <!-- /main-inner --> 
-</div>
-<!-- /main -->
-
-
 ?>

@@ -1,14 +1,8 @@
-<?php
-	define("cServidor", "localhost");
-	define("cUsuario", "root");
-	define("cPass","");
-	define("cBd","udla_local");
-	/*  
-	* 	archivo para consultas usadas con plugin datatables
-	*	los registros se guardan en un array y lo convertimos en formato json
-	*/
-	$conexion = mysqli_connect(cServidor, cUsuario, cPass, cBd);
-	$consulta = "SELECT id, nombre_completo, cedula, telefono FROM pacientes";
+<?php 
+include('../../config/conexion_i.php');
+
+
+$consulta = "SELECT id, nombre_completo, cedula, telefono FROM pacientes";
 	$registro = mysqli_query($conexion, $consulta);
 
 	//guardamos en un array multidimensional todos los datos de la consulta

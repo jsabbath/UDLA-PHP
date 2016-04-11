@@ -16,34 +16,34 @@ $paciente = mysql_fetch_assoc($tabla_pacientes);
 					<i class="icon-user"></i>
 					<h3>Tratamientos para el Paciente</h3>
 					<?php if (isset($_GET['cita'])) { ?>
-					<a href="../../PHP/enfermera/despachar.php?cita=<?php echo $_GET['cita']; ?>" class="btn btn-danger despachar btn-small">Despachar Paciente</a>	
+						<a href="../../PHP/enfermera/despachar.php?cita=<?php echo $_GET['cita']; ?>" class="btn btn-danger despachar btn-small">Despachar Paciente</a>	
 				   <?php } ?>
-					</div>  
+				</div>  
 
 				<div class="widget-content">
 
 					<div class="row-fluid">
-			<div class="span1">
-				<img src="../../../img/avatar.jpg" class="img-responsive img-circle" width="80px">
-			</div>
-			<div class="span4 primera">
-				<h4>Nombre y Apellido: <?php echo $paciente['nombre_completo']; ?> </h4>
-				<h4>Cedula: <?php echo $paciente['cedula']; ?> </h4>
-				<h4>Telefono: <?php echo $paciente['telefono']; ?> </h4>
-				<small><strong>Correo:</strong> <?php echo $paciente['email']; ?> </small>
-			</div>
-			<div class="span3 sengunda">
-				<h4>Edad: <?php echo calculaedad($paciente['fecha_nacimiento']); ?>  </h4>
-				<h4>Sexo: <?php echo $paciente['sexo']; ?></h4>
-				<h4>Ocupación: <?php echo $paciente['ocupacion']; ?> </h4>
-				<h4> Paciente desde: <?php echo "Hace ". calcular_fechas($paciente['created_at'])." dias"; ?> </h4>
-			</div>
-					<div class="span4 tercera">
-				<h4>Nos conocio a traves de: <?php echo $paciente['remitido']; ?> </h4>
-                <h4>Dirección: <?php echo $paciente['direccion']; ?> </h4>
-                </div>
+				<div class="span1">
+					<img src="../../../img/avatar.jpg" class="img-responsive img-circle" width="80px">
+				</div>
+				<div class="span4 primera">
+					<h4>Nombre y Apellido: <?php echo $paciente['nombre_completo']; ?> </h4>
+					<h4>Cedula: <?php echo $paciente['cedula']; ?> </h4>
+					<h4>Telefono: <?php echo $paciente['telefono']; ?> </h4>
+					<small><strong>Correo:</strong> <?php echo $paciente['email']; ?> </small>
+				</div>
+				<div class="span3 sengunda">
+					<h4>Edad: <?php echo calculaedad($paciente['fecha_nacimiento']); ?>  </h4>
+					<h4>Sexo: <?php echo $paciente['sexo']; ?></h4>
+					<h4>Ocupación: <?php echo $paciente['ocupacion']; ?> </h4>
+					<h4> Paciente desde: <?php echo "Hace ". calcular_fechas($paciente['created_at'])." dias"; ?> </h4>
+				</div>
+						<div class="span4 tercera">
+					<h4>Nos conocio a traves de: <?php echo $paciente['remitido']; ?> </h4>
+	                <h4>Dirección: <?php echo $paciente['direccion']; ?> </h4>
+	                </div>
 
-			</div> <hr>
+				</div> <hr>
 <!-- //////////////////////// TAGS //////////////////////////////// -->
 		<div class="tabbable">
 

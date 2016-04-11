@@ -119,3 +119,42 @@ var idp;
 			//no pasa nada
 		}
 	}
+
+
+	function addDiags(){
+		patologia = document.fmDiag.patologia.value;
+		Resultado = document.getElementById('resultado-diag');
+		ajax = objetoAjax();
+			ajax.open("POST", "../../PHP/especialista/register_patologia.php", true);
+			 ajax.onreadystatechange=function() {
+			   if (ajax.readyState==4) {
+			    	document.fmDiag.patologia.value = "";
+			    	Resultado.innerHTML = ajax.responseText;
+			    	alert("Los Datos fueron registrados con exito.!");
+			    	window.location.reload(true);
+			   }
+			}
+			ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+			ajax.send("patologia="+patologia)
+	}
+
+	function deleteDiag(id){
+		if(confirm("Esta seguro que desea eliminar el registro.?"))
+		{
+			Resultado = document.getElementById('resultado-diag');
+			ajax = objetoAjax();
+			ajax.open("POST", "../../PHP/especialista/eliminar_diag.php", true);
+			 ajax.onreadystatechange=function() {
+			   if (ajax.readyState==4) {
+			    	alert("el registro fue eliminado con exito.!");
+			    	window.location.reload(true);
+			   }
+			}
+			ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+			ajax.send("id="+id)
+		}
+		else
+		{
+			//no pasa nada
+		}
+	}

@@ -27,14 +27,8 @@ if ($sql) {
 	
   }
 
-
-
-
-
-
-
-
-}else {
+}else 
+{
 
 $patologias = $_POST['item'];
 	//$cita_id = $_POST['cita_id'];

@@ -30,7 +30,7 @@ class PDF extends FPDF {
 
 		$this->SetFont('Times','I',8);
 
-		$this->Cell(0,10,'PRESUPUESTO VALIDO POR 10 DIAS',0,0,'C');
+		$this->Cell(0,10,'PRESUPUESTO VALIDO POR 15 DIAS',0,0,'C');
 	}
 
 	function tablaProcedimientos($sql, $paq_sql)
@@ -256,13 +256,22 @@ $pdf->tablaProcedimientos($sql, $paq_sql);
 $pdf->Ln(5);
 $pdf->Ln(5);
 $pdf->Ln(5);
-$pdf->Ln(5);
-$pdf->Ln(5);
 $pdf->Cell(0,5,'___________________________', 0, 1, 'C');
 $pdf->SetFont('Times','B',12);
 $pdf->Cell(0,5,'DRA. LETICIA ACOSTA', 0, 1, 'C');
 $pdf->SetFont('Times','',8);
 $pdf->Cell(0,5,'ESPECIALISTA EN DERMATOLOGIA', 0, 1, 'C');
+
+$pdf->Ln(5);
+$pdf->Ln(5);
+$pdf->SetFont('Times','',10);
+$pdf->Cell(0,5,'PRESUPUESTO VALIDO POR 15 DIAS', 0, 1, 'L');
+$pdf->Ln(5);
+$pdf->Cell(0,5,'ESTE TRATAMIENTO TIENE UNA DURACIO DE _______________________', 0, 1, 'L');
+$pdf->Cell(0,5,'CON UNA FRECUENCIA DE _______________________', 0, 1, 'L');
+$pdf->Cell(0,5,'Y UN MES DE PRORROGA PARA SU TOTAL REALIZACION', 0, 1, 'L');
+$pdf->Cell(0,5,'EL TRATAMIENTO QUE NO SE HAYA RREALIZADO EN DICHO LAPSO DE TIEMPO', 0, 1, 'L');
+$pdf->Cell(0,5,'ESTARA SUJETO A MODIFICACION EN EL PRECIO SI FUERA NECESARIO', 0, 1, 'L');
 
 
 

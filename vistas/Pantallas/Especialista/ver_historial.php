@@ -18,9 +18,7 @@ $paquete_id = isset($_GET['paquete'])?$_GET['paquete']:"";
 require('../../header.php'); 
 include("../../PHP/paciente/consultas_historia.php");
 include("../../PHP/funciones.php");
-
 ?>
-
 
 <!-- ///////////////////////////Datos del paciente////////////////////////////// -->
 
@@ -75,22 +73,19 @@ include("../../PHP/funciones.php");
 <tr>
 <form name="form_diagnostico" method="POST" action="../../PHP/especialista/register_diagnosticos.php">
 <input type="hidden" name="paciente_id" value="<?php echo $id;?> ">
-<?php while ($patologias_1 = mysql_fetch_assoc($patologias_0)) { ?>
-<input type="hidden" name="id[]" value="<?php echo $patologias_1['id'];?> ">
-<input type="hidden" name="contador" value="<?php echo $patologias_1['id'];?> ">
-
-<table class="table table-striped table-bordered table-hover">
-  <thead>
-    <tr>
-      <th class="nombre_patologia"><?php echo ($patologias_1['diagnostico']); ?></th>
-      <th class="detalle_patologia"><label class="control-label" for="">Detalles:</label>
-       <textarea type="text"  name="detalles[]" class="form-control detalles" ></textarea></th>
-    </tr>
-  </thead>
-
+<table class="table table-striped table-condensed table-hover">
+	<thead>
+	<?php while ($patologias_1 = mysql_fetch_assoc($patologias_0)) { ?>
+		<input type="hidden" name="id[]" value="<?php echo $patologias_1['id'];?> ">
+		<input type="hidden" name="contador" value="<?php echo $patologias_1['id'];?> ">	
+		    <tr>
+		      <th class="nombre_patologia"><?php echo ($patologias_1['diagnostico']); ?></th>
+		      <th class="detalle_patologia"><label class="control-label" for="">Detalles:</label>
+		       <textarea type="text"  name="detalles[]" class="form-control detalles" ></textarea></th>
+		    </tr>
+	<?php  $c++; } ?>
+	</thead>
 </table>
-
-<?php  $c++; } ?>
 		<div class="form-actions">
 		<button type"submit" =class="btn btn-primary" name="patologias_detalles">Guardar</button>
 
@@ -146,31 +141,26 @@ include("../../PHP/funciones.php");
 
 
 			<div id="myModalpatologia_2" name="motivo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3 id="myModalLabel"><i class="icon-plus"></i> Agregar nueva patologia</h3>
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h3 id="myModalLabel"><i class="icon-plus"></i> Agregar nueva patologia</h3>
+				</div>
+				<div class="modal-body">
+					<form role="form" method="POST" action="../../PHP/especialista/nueva_patplogia.php">
+					<div class="control-group">
+						<label class="control-label" for="">Escriba el nombre de la nueva patologia a listar</label>
+							<div class="controls">
+						     <input class="patologia" type="text" name="patologia_2">
+						     <input type="hidden" name="paciente_id" value="<?php echo $id;?> ">
+							</div> <!-- /controls -->
+					</div>
+				</div>			
+				<div class="modal-footer">
+					<button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+					<button  type="submit" class="btn btn-primary">Guardar</button>
+					</form>
+				</div>
 			</div>
-			<div class="modal-body">
-			<form role="form" method="POST" action="../../PHP/especialista/nueva_patplogia.php">
-
-			<div class="control-group">
-			<label class="control-label" for="">Escriba el nombre de la nueva patologia a listar</label>
-			<div class="controls">
-		     <input class="patologia" type="text" name="patologia_2">
-		     <input type="hidden" name="paciente_id" value="<?php echo $id;?> ">
-			</div> <!-- /controls -->
-			</div>
-			</div>
-			
-			<div class="modal-footer">
-			<button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-			<button  type="submit" class="btn btn-primary">Guardar</button>
-			</form>
-			</div>
-
-			</div>
-
-
 <hr>
 
 <?php } ?>
