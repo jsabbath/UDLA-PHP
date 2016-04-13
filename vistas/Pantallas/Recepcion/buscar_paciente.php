@@ -14,191 +14,172 @@
 						$estado_civil     =$_SESSION['estado_civil'];
 						$ocupacion        =$_SESSION['ocupacion'];
 		?>
-	<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.20/themes/vader/jquery-ui.css">
-	-->
+
 	<div class="main">
 		<div class="main-inner">
 		    <div class="container">
-		      <div class="row">
-		      	
-		      	<div class="span12">      		
-		      		
-		      		<div class="widget ">
-		      			
+		      <div class="row">		      	
+		      	<div class="span12">		      		
+		      		<div class="widget ">		      			
 		      			<div class="widget-header">
 		      				<i class="icon-user"></i>
 		      				<h3>Paciente <?php echo $nombre; ?></h3>
 		  				</div> <!-- /widget-header -->
 						
 						<div class="widget-content">
-																		
-							<div class="tabbable">
+							<?php $act = isset($_GET['act'])?$_GET['act']:""; ?>					
+						<div class="tabbable">
 							<ul class="nav nav-tabs">
-							  <li class="<?php if (isset($_GET['cita_id'])) {
-							  
-							  	
-							  } else{echo "active";} ?>">
+							  <li class="<?php if ($act == "") {echo "active";}?>">
 							    <a class="perfil" href="#formcontrols" data-toggle="tab">Perfil</a>
 							  </li>
-							  <li><a class="perfil" href="#jscontrols" data-toggle="tab">Asignar Cita</a></li>
-							  <li class="<?php if (isset($_GET['cita_id'])) {
-							  	echo "active";
-							  } ?>"><a class="perfil" href="#jsconfirmacion" data-toggle="tab">Citas Medicas Realizadas</a></li>
+							  <li class="<?php if ($act == "asign") {echo "active";}?>"><a class="perfil" href="#jscontrols" data-toggle="tab">Asignar Cita</a></li>
+							  <li class="<?php if ($act == "citas") {echo "active";}?>"><a class="perfil" href="#jsconfirmacion" data-toggle="tab">Citas Medicas Realizadas</a></li>
 							  <li><a class="perfil" href="#jsrecipe" data-toggle="tab">Generar Recipe</a></li>
 							  <li><a class="perfil" href="#jsexamenes" data-toggle="tab">Examenes Solicitados</a></li>
 							  <li><a class="perfil" href="#jspaquetes" data-toggle="tab">Presupuestos</a></li>
 
-							</ul>
-							
+							</ul>						
 							<br>
-	<!-- //////////////////////////////////////////////////////////////////////////////////////////// -->
-	<!-- //////////////////////////////////////////////////////////////////////////////////////////// -->
-	<!-- /////////////////////////////////////Datos del paciente////////////////////////////////////////// -->
-	<!-- //////////////////////////////////////////////////////////////////////////////////////////// -->
-	<!-- //////////////////////////////////////////////////////////////////////////////////////////// -->
+	<!-- ///////////////////////////////////////////////////////////////////////////// -->
+	<!-- ///////////////////Datos del paciente////////////////////////////////////////// -->
+	
 							
-								<div class="tab-content">
-									<div class="tab-pane <?php if (isset($_GET['cita_id'])) {
-							  	echo "";
-							  	
-							  } else{echo "active";} ?>" id="formcontrols">
-									<form id="edit-profile" class="form-horizontal" method="post" action="../../PHP/recepcion/actualizar_paciente.php">
-										<fieldset>
-											   <?php 
-	                                        if(isset($_GET['guardado'])){ ?>
-	                                        	<center>
-	                                        		<div class="alert alert-success recepcion">
-		                                        		<button type="button" class="close" data-dismiss="alert">×</button>
-		                                             	<strong><?php echo $_GET['guardado']; ?></strong>
-		                                             </div>
-	                                        	</center>';
-	                                        <?php  }
-	                                        if(isset($_GET['error'])){ ?>
-	                                        	<center>
-		                                        	<div class="alert alert-error">
-		                                        		<button type="button" class="close" data-dismiss="alert">×</button>
-		                                             	<strong><?php echo $_GET['error']; ?></strong>
-		                                             </div>
-	                                             </center>
-	                                         <?php }
-	                                           ?>
-											<div class="control-group">											
-												<label class="control-label" for="nombre">Nombre</label>
-												<div class="controls">
-													<input type="text" class="span6 disabled" name="nombre" value="<?php echo $nombre; ?>" >
-													</div> <!-- /controls -->				
-											</div> <!-- /control-group -->
-											
-											
-									               <div class="control-group">											
-												<label class="control-label" for="cedula">Cedula</label>
-												<div class="controls">
-													<input type="text" class="span6 disabled" name="cedula"value="<?php echo $cedula; ?>" >
-													</div> <!-- /controls -->				
-											</div> <!-- /control-group -->
-											
-											
-											<div class="control-group">											
-												<label class="control-label" for="email">Correo Electronico</label>
-												<div class="controls">
-													<input type="text" class="span4" name="email"value="<?php echo $email; ?>">
-												</div> <!-- /controls -->				
-											</div> <!-- /control-group -->
+<div class="tab-content">
+	
+	<div class="tab-pane <?php if ($act == "") {echo "active";}?>" id="formcontrols">
+	<form id="edit-profile" class="form-horizontal" method="post" action="../../PHP/recepcion/actualizar_paciente.php">
+		<fieldset>
+			<?php 
+            if(isset($_GET['guardado'])){ ?>           	
+        		<div class="alert alert-success">
+            		<button type="button" class="close" data-dismiss="alert">×</button>
+                 	<center><strong><?php echo $_GET['guardado']; ?></strong></center>
+                 </div>
+            <?php  }
+            else if(isset($_GET['error'])){ ?>
+            	<div class="alert alert-error">
+            		<button type="button" class="close" data-dismiss="alert">×</button>
+                 	<center><strong><?php echo $_GET['error']; ?></strong></center>
+                 </div>
+             <?php } ?>
+			<div class="control-group">											
+				<label class="control-label" for="nombre">Nombre</label>
+				<div class="controls">
+					<input type="text" class="span6 disabled" name="nombre" value="<?php echo $nombre; ?>" >
+					</div> <!-- /controls -->				
+			</div> <!-- /control-group -->
+			
+			
+	               <div class="control-group">											
+				<label class="control-label" for="cedula">Cedula</label>
+				<div class="controls">
+					<input type="text" class="span6 disabled" name="cedula"value="<?php echo $cedula; ?>" >
+					</div> <!-- /controls -->				
+			</div> <!-- /control-group -->
+			
+			
+			<div class="control-group">											
+				<label class="control-label" for="email">Correo Electronico</label>
+				<div class="controls">
+					<input type="text" class="span4" name="email"value="<?php echo $email; ?>">
+				</div> <!-- /controls -->				
+			</div> <!-- /control-group -->
+	
+			
+			<div class="control-group">											
+				<label class="control-label" for="telefono">Telefono</label>
+				<div class="controls">
+					<input type="text" class="span4" name="telefono" value="<?php echo $telefono; ?>">
+				</div> <!-- /controls -->				
+			</div> <!-- /control-group -->
+				<?php if ($sexo=='') { ?>
+				<div class="control-group">											
+				<label class="control-label" for="sexo">Sexo</label>
+				<div class="controls">
+					<select name="sexo">
+					<option>Masculino</option>
+					<option>Femenino</option>
+					</select>
+				</div> <!-- /controls -->				
+			</div> <!-- /control-group -->
+					<?php } ?>
+				<?php if ($estado_civil=='') { ?>
+			
+            		<div class="control-group">											
+				<label class="control-label" for="estado_civil">Estado civil</label>
+				<div class="controls">
+					<select name="estado_civil">
+                   <option>Soltero/a</option>
+                    <option>Casado/a</option>
+                    <option>Divorciado/a</option>
+                    <option>Viudo/a</option>
+
+					</select>
+				</div> <!-- /controls -->				
+			</div> <!-- /control-group -->
+            <?php } ?>
+            <div class="control-group">											
+				<label class="control-label" for="fecha_nacimiento">Fecha de Nacimiento</label>
+				<div class="controls">
+					<input type="date" class="span4" id="" name="fecha_nacimiento" value="<?php echo $fecha_nacimiento; ?>">
+				</div> <!-- /controls -->				
+			</div> <!-- /control-group -->
+			  <div class="control-group">											
+				<label class="control-label" for="ocupacion">Ocupacion</label>
+				<div class="controls">
+					<input type="text" class="span4" name="ocupacion" value="<?php echo $ocupacion; ?>">
+				</div> <!-- /controls -->				
+			</div> <!-- /control-group -->
+
+			 <div class="control-group">											
+				<label class="control-label" for="direccion">Direccion</label>
+				<div class="controls">
+					<textarea rows="3" name="direccion"><?php echo $direccion; ?></textarea>
+				</div> <!-- /controls -->				
+			</div> <!-- /control-group -->
+
+              <div class="control-group">											
+				
+				<div class="controls">
+					<input type="text" style="display:none;" name="id"value="<?php echo $id; ?>">
+				</div> <!-- /controls -->				
+			</div> <!-- /control-group -->
+  	 <br />
+			<div class="form-actions">       
+				<button type="submit" class="btn btn-primary">Actualizar</button> 
+				<button class="btn">Cancelar</button>
+			</div> <!-- /form-actions -->
+		</fieldset>
+	</form>
+	</div>
 									
-											
-											<div class="control-group">											
-												<label class="control-label" for="telefono">Telefono</label>
-												<div class="controls">
-													<input type="text" class="span4" name="telefono" value="<?php echo $telefono; ?>">
-												</div> <!-- /controls -->				
-											</div> <!-- /control-group -->
-												<?php if ($sexo=='') { ?>
-												<div class="control-group">											
-												<label class="control-label" for="sexo">Sexo</label>
-												<div class="controls">
-													<select name="sexo">
-													<option>Masculino</option>
-													<option>Femenino</option>
-													</select>
-												</div> <!-- /controls -->				
-											</div> <!-- /control-group -->
-													<?php } ?>
-												<?php if ($estado_civil=='') { ?>
-											
-	                                        		<div class="control-group">											
-												<label class="control-label" for="estado_civil">Estado civil</label>
-												<div class="controls">
-													<select name="estado_civil">
-	                                               <option>Soltero/a</option>
-	                                                <option>Casado/a</option>
-	                                                <option>Divorciado/a</option>
-	                                                <option>Viudo/a</option>
+	<!-- ///////////////////////////////Asignar citas////////////////////////////////////////// -->
+	<!-- ////////////////////////////////////////////////////////////////////////////////// -->
+		<div class="tab-pane <?php if ($act == "asign") {echo "active";}?>" id="jscontrols">
 
-													</select>
-												</div> <!-- /controls -->				
-											</div> <!-- /control-group -->
-	                                        <?php } ?>
-	                                        <div class="control-group">											
-												<label class="control-label" for="fecha_nacimiento">Fecha de Nacimiento</label>
-												<div class="controls">
-													<input type="date" class="span4" id="" name="fecha_nacimiento" value="<?php echo $fecha_nacimiento; ?>">
-												</div> <!-- /controls -->				
-											</div> <!-- /control-group -->
-											  <div class="control-group">											
-												<label class="control-label" for="ocupacion">Ocupacion</label>
-												<div class="controls">
-													<input type="text" class="span4" name="ocupacion" value="<?php echo $ocupacion; ?>">
-												</div> <!-- /controls -->				
-											</div> <!-- /control-group -->
+			<?php 
+	        if(isset($_GET['success'])){ ?>           	
+	    		<div class="alert alert-success">
+	        		<button type="button" class="close" data-dismiss="alert">×</button>
+	             	<center><strong><?php echo $_GET['success']; ?></strong></center>
+	             </div>
+	        <?php  }
+	        else if(isset($_GET['error_asign'])){ ?>
+	        	<div class="alert alert-error">
+	        		<button type="button" class="close" data-dismiss="alert">×</button>
+	             	<center><strong><?php echo $_GET['error_asign']; ?></strong></center>
+	             </div>
+	         <?php } ?>
 
-											 <div class="control-group">											
-												<label class="control-label" for="direccion">Direccion</label>
-												<div class="controls">
-													<textarea rows="3" name="direccion"><?php echo $direccion; ?></textarea>
-												</div> <!-- /controls -->				
-											</div> <!-- /control-group -->
-
-	                                          <div class="control-group">											
-												
-												<div class="controls">
-													<input type="text" style="display:none;" name="id"value="<?php echo $id; ?>">
-												</div> <!-- /controls -->				
-											</div> <!-- /control-group -->
-
-
-
-
-	                              	 <br />
-											<div class="form-actions">
-
-
-	       
-												<button type="submit" class="btn btn-primary">Actualizar</button> 
-												<button class="btn">Cancelar</button>
-											</div> <!-- /form-actions -->
-										</fieldset>
-									</form>
-									</div>
-									
-
-	<!-- //////////////////////////////////////////////////////////////////////////////////////////// -->
-	<!-- //////////////////////////////////////////////////////////////////////////////////////////// -->
-	<!-- /////////////////////////////////////Asignar citas////////////////////////////////////////// -->
-	<!-- //////////////////////////////////////////////////////////////////////////////////////////// -->
-	<!-- //////////////////////////////////////////////////////////////////////////////////////////// -->
-		<div class="tab-pane" id="jscontrols">
-			<form id="edit-profile" class="form-horizontal" method="post" action="../../PHP/recepcion/cita_paciente.php">
+			<form id="edit-profile" class="form-horizontal" method="POST" action="../../PHP/recepcion/cita_paciente.php">
 			<fieldset>              													
 				<div class="control-group">											
 					<label class="control-label" for="fecha">Seleccione una Fecha</label>
 					<div class="controls">
-						<input type="date" class="span4" id="" name="fecha" min="<?php echo date('Y-m-d'); ?>">
+						<input type="date" class="span4" name="fecha" min="<?php echo date('Y-m-d'); ?>">
 					</div> <!-- /controls -->				
-				</div> <!-- /control-group -->
-		
-				
+				</div> <!-- /control-group -->			
 				<div class="control-group">											
 					<label class="control-label">Motivo de la Cita</label>				
             		<div class="controls">
@@ -244,31 +225,37 @@
 					</div> <!-- /controls -->				
 				</div> <!-- /control-group -->
 
-                <div class="control-group">																
+                <div class="control-group">	
 					<div class="controls">
 						<input type="text" style="display:none;" name="id"value="<?php echo $id; ?>">
 					</div> <!-- /controls -->				
 				</div> <!-- /control-group -->
-      	 <br />
+      	 		<br/>
 				<div class="form-actions">	       
-					<button type="submit" class="btn btn-primary">Guardar cita</button> 
-					<button class="btn">Cancelar</button>
+					<button type="submit" class="btn btn-primary">Crear Cita</button> 
 				</div> <!-- /form-actions -->
 			</fieldset>
 		</form>
 		</div>
-		
-	<!-- //////////////////////////////////////////////////////////////////////////////////////////// -->
-	<!-- //////////////////////////////////////////////////////////////////////////////////////////// -->
-	<!-- /////////////////////////////////////Confirmacion////////////////////////////////////////// -->
-	<!-- //////////////////////////////////////////////////////////////////////////////////////////// -->
-	<!-- //////////////////////////////////////////////////////////////////////////////////////////// -->
-	<div class=" <?php if (isset($_GET['cita_id'])) {
-			echo "tab-pane active";
-			}else { echo "tab-pane";} ?>" id="jsconfirmacion">
+<!-- //////////////////////////////Confirmacion///////////////////////////////////////// -->
+<!-- ////////////////////////////////////////////////////////////////////////////////// -->
+
+	<div class="tab-pane  <?php if ($act == "citas") {echo "active";}?>" id="jsconfirmacion">
 	
 		<center><h3>Citas Medicas</h3></center>
-
+			<?php 
+	        if(isset($_GET['msg_cita'])){ ?>           	
+	    		<div class="alert alert-success">
+	        		<button type="button" class="close" data-dismiss="alert">×</button>
+	             	<center><strong><?php echo $_GET['msg_cita']; ?></strong></center>
+	             </div>
+	        <?php  }
+	        else if(isset($_GET['error_cita'])){ ?>
+	        	<div class="alert alert-error">
+	        		<button type="button" class="close" data-dismiss="alert">×</button>
+	             	<center><strong><?php echo $_GET['error_cita']; ?></strong></center>
+	             </div>
+	         <?php } ?>
 	  	<table class="table table-hover "> 
 		    <thead>
 	    	    <tr>
@@ -283,8 +270,8 @@
 		    <tbody>				
 				<?php
 				$nro = 1;
-				$result = mysql_query("SELECT * FROM citas WHERE paciente_id = '$id' ORDER BY fecha DESC");			
-				while($row = mysql_fetch_array($result))
+				$result = mysql_query("SELECT * FROM citas WHERE paciente_id = '{$id}' ORDER BY fecha DESC");			
+				while($row = mysql_fetch_assoc($result))
 				{ ?>
 					<tr>
 						<td><?php echo $nro; $nro++; ?></td>
@@ -316,7 +303,7 @@
 						<td>
 							<?php 
 							if ($row['status']== 0 OR $row['status']== 1 ) { ?>
-								<a href="../../PHP/recepcion/cancelar_cita.php?ids=<?php echo $row['id'];?>&paciente=<?php echo $row['paciente_id']; ?>" class="btn "><i class="icon-trash" title="Eliminar"> Cancelar</i></a>
+								<a href="../../PHP/recepcion/cancelar_cita2.php?cita=<?php echo $row['id'];?>&paciente=<?php echo $row['paciente_id']; ?>" class="btn "><i class="icon-trash" title="Cancelar"> Cancelar</i></a>
 							<?php } ?>						
 						</td>
 					</tr>
@@ -326,8 +313,14 @@
        		</tbody>	                      
 	  	</table>
 	</div>
-<!-- //////////////////////////////////////////////////////////////////////////////////////////// -->
-	<!-- /////////////////////////////////////PAQUETES////////////////////////////////////////// -->
+<!-- ////////////////////////////////////////////////////////////////////////////////////// -->
+<!-- ///////////////////////////////PAQUETES////////////////////////////////////////// -->
+	<div class="tab-pane" id="jsrecipe">
+		<h3>Creacion de Recipe.</h3>
+		<li>No disponible.</li>
+	</div>
+<!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+<!-- ////////////////////////////EXAMENES DE LABORATORIO/////////////////////////////// -->
 	<div class="tab-pane" id="jsexamenes">
 		<h3>Examenes de laboratorio</h3>
 		<?php include("../../PHP/recepcion/consulta_examenes_solicitados.php"); ?>

@@ -26,7 +26,7 @@ function diferirFecha(id, fecha){
 
 function Diferir(){
     $('#myModalDiferir').modal('hide');
-        Resultado = document.getElementById('resultado-esperas');
+        //Resultado = document.getElementById('resultado-esperas');
         cita_id = document.fmdiferir.cita_id.value;
         fecha = document.fmdiferir.fecha.value;
 
@@ -35,7 +35,7 @@ function Diferir(){
         
         ajax.onreadystatechange=function() {
            if (ajax.readyState==4) {
-                Resultado.innerHTML = ajax.responseText;
+                //Resultado.innerHTML = ajax.responseText;
                 window.location.reload(true);
                 alert("La fecha de la cia fue cambiada con exito");
            }
@@ -44,6 +44,7 @@ function Diferir(){
         //enviando los valores a registro.php para que inserte los datos
         ajax.send("id="+cita_id+"&fecha="+fecha)
 }
+
 
 function cambiarStatus(id, status){
     var cita_id = id;

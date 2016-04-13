@@ -2,18 +2,35 @@
 $header=1;
 $activo=9;
 require('../../header.php');
-include('../../PHP/recepcion/conecciones.php');
 include('../../PHP/funciones.php');
 date_default_timezone_set('America/Caracas');
-$hoy = date('Y-m-d');
-$pag = mysql_query("SELECT * FROM pagos WHERE fecha = '{$hoy}'"); //
+if (isset($_POST['fecha'])) {
+  $hoy = $_POST['fecha'];
+}
+else
+{
+  $hoy = date('Y-m-d');
+}
+$pag = mysql_query("SELECT * FROM pagos WHERE fecha = '{$hoy}'"); 
 ?>
 
 <div class="container">
 	<div class="row">
 		
-		<center> <br> <h2>Morbilidad: <?php echo fecha_total($hoy); ?> </h2> <br> </center>
-		
+		<center> <br> <h2>Morbilidad: <?php echo fecha_total($hoy); ?> </h2> </center>
+		<div class="span12">
+		    <center>
+		      <form action="" method="POST" class="form-inline" accept-charset="utf-8">       
+		        <div class="control-group">
+		        <br>
+		            <p>Seleccione otra fecha para visualizar la morbilidad.</p>
+		            <input type="date" name="fecha" required>
+		            <button type="submit" class="btn btn-default">Buscar</button>
+		        </div>
+		      </form>
+		        
+		    </center>
+		</div>
 		<div class="span2">
 			<div class="widget">
 				<div class="widget-header">

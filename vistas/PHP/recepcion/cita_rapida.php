@@ -1,5 +1,6 @@
 <?php
 include "../../config/datos.php";
+date_default_timezone_set('America/Caracas');
 $fecha_cita=$_POST['fecha'];
 $motivo=$_POST['consulta'];
 $nota = $_POST['nota'];

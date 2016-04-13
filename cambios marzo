@@ -1,21 +1,44 @@
 Buenas noches David, aquí te enviamos las siguientes observaciones para su respectiva creación o corrección.
 
-1º  Se debe poder cargar a los pacientes de citas para el día de hoy  de primera vez, control, tratamientos, Emergencias, tanto de un mismo paciente varias citas como pacientes de primera vez.
+////////////////1º  Se debe poder cargar a los pacientes de citas para el día de hoy  de primera vez, 
+////////////////control, tratamientos, Emergencias, tanto de un mismo paciente varias citas como 
+////////////////pacientes de primera vez.
 
 2º Cargar a los pacientes de Control en la Tablet con una lista de preguntas y todos sus antecedentes.
 
 3º  Que la Dra. Leticia tenga una entrada y las Medicos Residentes (Dra. Pupo) tenga otra entrada, porque la Dra. Pupo si puede asignar los tratamientos pero requiere la autorizacion (solicitud) de la Dra. Leticia.
 
-4º Que la Dra. Leticia pueda en sus Ajustes modificar y borrar los Diagnósticos asignados y el listado de Diagnósticos ya previamente cargados. Actualmente solo puede modificaros pero no borrarlos.
+//////////////////4º Que la Dra. Leticia pueda en sus Ajustes modificar y borrar los Diagnósticos 
+/////////////////asignados y el listado de Diagnósticos ya previamente cargados. Actualmente 
+////////////////solo puede modificaros pero no borrarlos.
 
 5º La Dra. Leticia quiere una Hoja Control que incluya  Fecha, Diagnostico, Tratamientos, Procedimientos de Cabina y Ordenes de laboratorio para el dia en que acudio a la consulta.
 
 6º Quiere poder  borrar o editar la lista de Examenes en las Ordenes de laboratorio en los Ajustes.
 
-7º  En los Presupuestos de Paquete debes anexar lo siguiente 
+///////////////////////7º  En los Presupuestos de Paquete debes anexar lo siguiente 
+////////////////////////a.-  Presupuesto Valido por 15 dias.
+////////////////////////b.-  El Tratamiento tendrá una Duración de: _________________  
+////////////////////////c.-   Con una Frecuencia de: ______________________
+////////////////////////Adjunto te anexo un Modelo
 
-a.-  Presupuesto Valido por 15 dias.
-b.-  El Tratamiento tendrá una Duración de: _________________  
-c.-   Con una Frecuencia de: ______________________
 
-Adjunto te anexo un Modelo
+ABRIL
+
+1.- Cuando la doctora NO acepta el descuento o NO lo aplica, continúa apareciendo en la hoja de presupuesto. Queremos que si no se acepta el mismo, no aparezca.
+
+2.- Cuando se busca una cita por fecha, en ese renglón o icono, no aparece el calendario, quisiéramos que apareciera, para evitar confusiones.
+
+3.- En las citas ya pautadas o por confirmar de tratamientos, queremos que aparezcan los mismos y si es una paquete o individual.
+
+4.- cuando hacemos la búsqueda de citas por fecha, queremos que aparezca ésta (fecha) en el resultado de la búsqueda, como un enunciado o "banner".
+
+5.- Cómo  podemos agregar los procedimientos?
+
+6.- Queremos que el administrador pueda modificar y agregar los usuarios y las claves. Hay errores ortográficos en los usuarios, ejemplo "recidente".
+
+7.- Por qué en una PC puedo abrir varios usuarios (PC Dra. Leticia) y en otros no (PC recepción). Quisiéramos que fuese posible en todas.
+
+8.- Cómo vemos histórico y morbilidad de fechas anteriores?
+
+9.- Si por el administrador modifico la frecuencia de citas de los tratamientos, por qué no se modifica en las citas ya creadas? Quisiéramos que fuese posible.
